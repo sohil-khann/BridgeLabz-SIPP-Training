@@ -16,14 +16,13 @@ public class LeapYearCheck {
         System.out.print("Enter a year (>= 1582): ");
         int year = scanner.nextInt();
 
-        if (year >= 1582) { // Check here as well to avoid printing result for invalid years based on method's own check
+        if (year >= 1582) { 
             if (isLeapYear(year)) {
                 System.out.println(year + " is a Leap Year.");
             } else {
                 System.out.println(year + " is not a Leap Year.");
             }
-        } else if (year < 1582 && year > 0) { // If year is < 1582 but positive, isLeapYear would have printed its message.
-             // No additional message needed here as isLeapYear handles it.
+        } else if (year < 1582 && year > 0) { 
         } else {
             System.out.println("Invalid year input.");
         }
