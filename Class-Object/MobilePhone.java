@@ -55,5 +55,12 @@
     public static void main(String[] args) {
         // Creating a MobilePhone object
         MobilePhone phone1 = new MobilePhone("Samsung", "Galaxy S21", 69999.0);
+    
 
-        // Displaying the phone det
+ 
+        // Displaying the phone details
+
+    phone1.displayPhoneDetails();
+
+    }
+}       // Displaying the phone det

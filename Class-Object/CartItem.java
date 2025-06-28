@@ -91,7 +91,7 @@ class ShoppingCart {
 }
 
 // Main class to test the program
-public class ShoppingCartSimulator {
+class ShoppingCartSimulator {
     public static void main(String[] args) {
         // Create a shopping cart
         ShoppingCart cart = new ShoppingCart();

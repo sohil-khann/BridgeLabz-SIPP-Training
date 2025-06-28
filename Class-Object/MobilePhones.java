@@ -7,7 +7,7 @@
     private double price;
 
     // Constructor to initialize MobilePhone attributes
-    public MobilePhone(String brand, String model, double price) {
+    public MobilePhones(String brand, String model, double price) {
         this.brand = brand;
         this.model = model;
         this.price = price;
@@ -54,6 +54,9 @@
     // Main method to test the MobilePhone class
     public static void main(String[] args) {
         // Creating a MobilePhone object
-        MobilePhone phone1 = new MobilePhone("Samsung", "Galaxy S21", 69999.0);
+        MobilePhones phone1 = new MobilePhones("Samsung", "Galaxy S21", 69999.99);
 
-        // Displaying the phone det
+        // Displaying the phone details
+        phone1.displayPhoneDetails();
+    }
+}
