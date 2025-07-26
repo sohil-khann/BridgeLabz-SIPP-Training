@@ -36,7 +36,7 @@ This repository is organized by branches, each representing a week of focused le
 - Loops, Arrays, Strings
 - Exception Handling, I/O
 
-📂 Branch: [`week1_Core-Java`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/week1_Core-Java)
+📂 Branch: [`CoreJava`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/CoreJava)
 
 ---
 
@@ -46,7 +46,7 @@ This repository is organized by branches, each representing a week of focused le
 - Abstraction & Interfaces
 - Encapsulation, Constructors
 
-📂 Branch: [`week2_OOPs`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/week2_OOPs)
+📂 Branch: [`OOPS`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/OOPS)
 
 ---
 
@@ -56,7 +56,7 @@ This repository is organized by branches, each representing a week of focused le
 - Searching, Sorting
 - Time & Space Complexity
 
-📂 Branch: [`week3_DSA`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/week3_DSA)
+📂 Branch: [`DSA`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/DSA)
 
 ---
 
@@ -65,9 +65,29 @@ This repository is organized by branches, each representing a week of focused le
 - Hands-on real-world coding
 - Team collaboration & Git usage
 
-📂 Branch: [`week4_Workshop`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/week4_Workshop)
+📂 Branch: [`Workshop`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/Workshop)
 
 ---
+### 🔹 Week 5 – Generics & Collections
+- Java Generics
+- Collections Framework
+- List, Set, Map Implementations
+- Custom Generic Classes
+
+📂 Branch: [`GenericsAndCollections`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/GenericsAndCollections)
+
+---
+
+### 🔹 Week 6 – Advanced Data Structures & Algorithms
+- Trees & Graphs
+- Advanced Sorting Algorithms
+- Dynamic Programming
+- Problem Solving Techniques
+
+📂 Branch: [`AdvanceDSA`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/AdvanceDSA)
+
+---
+
 
 ## 🧠 Learning Outcomes
 
