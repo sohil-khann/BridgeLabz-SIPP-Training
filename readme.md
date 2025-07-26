@@ -65,7 +65,7 @@ This repository is organized by branches, each representing a week of focused le
 - Hands-on real-world coding
 - Team collaboration & Git usage
 
-📂 Branch: [`Workshop`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/Workshop)
+📂 Branch: [`WorkShop`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/WorkShop)
 
 ---
 ### 🔹 Week 5 – Generics & Collections
