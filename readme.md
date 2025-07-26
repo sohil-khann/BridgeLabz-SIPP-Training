@@ -13,6 +13,21 @@ This section showcases the implementation of various problems using Java Generic
 *   `AIDrivenResumeScreeningSystem`: Implements an AI-driven resume screening system with generic job role and resume handling.
 
 
+## Java Collections Examples
+
+This section demonstrates the implementation of various problems using Java Collections, showcasing the use of different collection types like List, Set, Queue, and Map.
+
+*   `ListInterface`: Contains problems related to the List Interface, such as reversing lists, finding elements, and removing duplicates.
+*   `SetInterface`: Includes problems related to the Set Interface, such as checking set equality, union, intersection, symmetric difference, and finding subsets.
+*   `QueueInterface`: Features problems related to the Queue Interface, including reversing queues, generating binary numbers, hospital triage system, and implementing a stack using queues.
+*   `MapInterface`: Contains problems related to the Map Interface, such as word frequency counting, inverting maps, finding keys with highest values, merging maps, and grouping objects by property.
+*   `InsurancePolicyManagementSystem`: Implements an insurance policy management system using various Set implementations.
+*   `InsurancePolicyManagementUsingMap`: Implements an insurance policy management system using various Map implementations.
+*   `VotingSystem`: Implements a voting system using HashMap, LinkedHashMap, and TreeMap.
+*   `ShoppingCart`: Implements a shopping cart system using HashMap, LinkedHashMap, and TreeMap.
+*   `BankingSystem`: Implements a banking system using HashMap, TreeMap, and Queue.
+
+
 ## Other Branches
 
 This repository also contains code related to the following branches:
