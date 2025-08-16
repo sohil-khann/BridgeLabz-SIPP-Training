@@ -78,6 +78,34 @@ This section demonstrates the implementation of various problems using **Java Co
 
 ---
 
+## ⚡ Java Lambda Expressions and Method References
+
+This section demonstrates **Java Lambda Expressions** and **Method References** with practical examples, showcasing functional programming concepts in Java 8 and above.
+
+### Lambda Expression Examples
+
+| Example | Description |
+|---------|-------------|
+| **SmartHomeLighting** | Implements smart home lighting automation using lambda expressions for dynamic light behavior activation |
+| **CustomSortingEcommerce** | Demonstrates custom product sorting in e-commerce using Comparator with lambda expressions |
+| **NotificationFiltering** | Shows notification filtering using Predicate with lambda expressions for hospital alert systems |
+
+### Method Reference Examples
+
+| Example | Description |
+|---------|-------------|
+| **HospitalPatientIDPrinting** | Demonstrates various method references (instance, static, constructor) for patient ID processing |
+| **NameUppercasing** | Converts employee names to uppercase using String::toUpperCase with streams |
+| **InvoiceObjectCreation** | Creates invoice objects using constructor references from transaction data |
+
+### Key Features
+- **Beginner-friendly**: Simple, well-commented code with clear lambda and method reference examples
+- **Interactive input**: Most programs accept user input for testing different scenarios
+- **Real-world applications**: Practical examples from smart home, e-commerce, healthcare, and finance domains
+- **Functional programming**: Demonstrates functional interfaces, streams, and method references
+
+---
+
 ## 🌊 Java Streams Examples
 
 This section presents solutions to various problems using **Java I/O and Streams**, covering file handling, buffered streams, object serialization, and inter-thread communication.
@@ -382,11 +410,13 @@ This repository also contains code related to the following branches:
 BridgeLabz-SIPP-Training/
 ├── Collections/           # Java Collections examples
 ├── Generics/              # Java Generics examples
+├── JavaLambdaExpression/  # Java Lambda Expressions and Method References
 ├── JavaStreams/           # Java I/O and Streams examples
 ├── JavaExceptions/        # Java Exception handling examples
 ├── JavaRegexAndJunit/     # Java Regex and JUnit testing examples
 │   ├── JavaJunit/         # Maven JUnit testing project
 │   └── *.java             # Individual regex examples
+├── PseudoCode/            # Pseudocode solutions for various problems
 ├── out/                   # Compiled output
 ├── .idea/                 # IDE configuration
 └── readme.md             # This file
