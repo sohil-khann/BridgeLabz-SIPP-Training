@@ -1,443 +1,228 @@
-# BridgeLabz-SIPP-Training
+# BridgeLabz SIPP Training - Java Programming Problems
 
-Welcome to the **BridgeLabz SIPP Training** repository! This repository contains a comprehensive collection of Java programming examples and solutions, organized into different categories to demonstrate various concepts and techniques.
+This repository contains comprehensive pseudo-code solutions for Java programming problems organized by difficulty and topics including Java OOPs, Data Structures & Algorithms, and Collections, Generics, Streams.
 
-## 📚 Table of Contents
-
-- [Java Generics Examples](#java-generics-examples)
-- [Java Collections Examples](#java-collections-examples)
-- [Java Streams Examples](#java-streams-examples)
-- [Java Exceptions Examples](#java-exceptions-examples)
-- [Java Regex Examples](#java-regex-examples)
-- [JUnit Testing Examples](#junit-testing-examples)
-- [Other Branches](#other-branches)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-
----
-
-## 🎯 Java Generics Examples
-
-This section showcases advanced implementations using **Java Generics**, demonstrating type safety, reusability, and maintainability through real-world scenarios.
-
-### Featured Projects:
-
-| Project | Description |
-|---------|-------------|
-| **SmartWarehouseManagementSystem** | Implements a smart warehouse system for managing different types of items using generic storage |
-| **DynamicOnlineMarketplace** | Creates a dynamic online marketplace with generic product handling and discount application |
-| **MultiLevelUniversityCourseManagementSystem** | Develops a university course management system with generic course evaluations and student enrollment |
-| **PersonalizedMealPlanGenerator** | Builds a personalized meal plan generator that handles various meal types using generic meal plans |
-| **AIDrivenResumeScreeningSystem** | Implements an AI-driven resume screening system with generic job role and resume handling |
-
----
-
-## 🔧 Java Collections Examples
-
-This section demonstrates the implementation of various problems using **Java Collections**, showcasing the use of different collection types like List, Set, Queue, and Map.
-
-### Collection Types Covered:
-
-#### 📋 List Interface
-- **FindFrequencyOfElements**: Count frequency of elements in a list
-- **FindNthElementFromEnd**: Find the nth element from the end of a list
-- **RemoveDuplicatesPreservingOrder**: Remove duplicates while maintaining order
-- **ReverseList**: Reverse elements in a list
-- **RotateElementsInList**: Rotate elements by a specified position
-
-#### 🎯 Set Interface
-- **CheckIfTwoSetsAreEqual**: Compare two sets for equality
-- **ConvertSetToSortedList**: Convert a Set to a sorted List
-- **FindSubsets**: Generate all possible subsets of a set
-- **SymmetricDifference**: Find elements present in only one of the sets
-- **UnionAndIntersectionOfTwoSets**: Calculate union and intersection
-
-#### 🔄 Queue Interface
-- **CircularBuffer**: Implement a circular buffer using queue
-- **GenerateBinaryNumbers**: Generate binary numbers from 1 to N
-- **HospitalTriageSystem**: Emergency room triage system simulation
-- **ReverseQueue**: Reverse the elements of a queue
-- **StackUsingQueues**: Implement a stack using two queues
-
-#### 🗺️ Map Interface
-- **FindKeyWithHighestValue**: Find the key with maximum value
-- **GroupObjectsByProperty**: Group objects based on a property
-- **InvertMap**: Swap keys and values in a map
-- **MergeTwoMaps**: Combine two maps efficiently
-- **WordFrequencyCounter**: Count word frequency in text
-
-### Real-World Applications:
-
-| Application | Description |
-|-------------|-------------|
-| **InsurancePolicyManagementSystem** | Manages insurance policies using Set implementations |
-| **InsurancePolicyManagementUsingMap** | Manages insurance policies using Map implementations |
-| **VotingSystem** | Implements a voting system using HashMap, LinkedHashMap, and TreeMap |
-| **ShoppingCart** | Creates a shopping cart system using HashMap, LinkedHashMap, and TreeMap |
-| **BankingSystem** | Implements a banking system using HashMap, TreeMap, and Queue |
-
----
-
-## ⚡ Java Lambda Expressions and Method References
-
-This section demonstrates **Java Lambda Expressions** and **Method References** with practical examples, showcasing functional programming concepts in Java 8 and above.
-
-### Lambda Expression Examples
-
-| Example | Description |
-|---------|-------------|
-| **SmartHomeLighting** | Implements smart home lighting automation using lambda expressions for dynamic light behavior activation |
-| **CustomSortingEcommerce** | Demonstrates custom product sorting in e-commerce using Comparator with lambda expressions |
-| **NotificationFiltering** | Shows notification filtering using Predicate with lambda expressions for hospital alert systems |
-
-### Method Reference Examples
-
-| Example | Description |
-|---------|-------------|
-| **HospitalPatientIDPrinting** | Demonstrates various method references (instance, static, constructor) for patient ID processing |
-| **NameUppercasing** | Converts employee names to uppercase using String::toUpperCase with streams |
-| **InvoiceObjectCreation** | Creates invoice objects using constructor references from transaction data |
-
-### Key Features
-- **Beginner-friendly**: Simple, well-commented code with clear lambda and method reference examples
-- **Interactive input**: Most programs accept user input for testing different scenarios
-- **Real-world applications**: Practical examples from smart home, e-commerce, healthcare, and finance domains
-- **Functional programming**: Demonstrates functional interfaces, streams, and method references
-
----
-
-## 🌊 Java Streams Examples
-
-This section presents solutions to various problems using **Java I/O and Streams**, covering file handling, buffered streams, object serialization, and inter-thread communication.
-
-### Stream Types and Examples:
-
-#### 📁 File Handling
-- **FileReadWrite.java**: Read from source file and write to destination
-- **UserInputToFile.java**: Read user input from console and save to file
-- **LargeFileErrorReader.java**: Efficiently read large files line by line
-
-#### 🔄 Buffered Streams
-- **BufferedStreamCopy.java**: Efficient file copy using buffered streams with performance comparison
-
-#### 📊 Data Processing
-- **CaseConverter.java**: Convert uppercase letters to lowercase in text files
-- **WordCounter.java**: Count words and find top 5 most frequent words
-- **StudentDataStream.java**: Store and retrieve student details using Data streams
-
-#### 🖼️ Binary Data
-- **ImageToByteArray.java**: Convert images to byte arrays and vice versa
-
-#### 🔄 Object Serialization
-- **EmployeeSerialization.java**: Serialize and deserialize Employee objects
-- **Employee.java**: Employee class for serialization example
-
-#### 🧵 Inter-Thread Communication
-- **PipedStreamsCommunication/**: Demonstrates communication between threads using piped streams
-
----
-
-## ⚠️ Java Exceptions Examples
-
-This section provides comprehensive examples of exception handling in Java, covering checked exceptions, unchecked exceptions, custom exceptions, and various exception handling techniques.
-
-### Exception Handling Examples:
-
-| Example | Description |
-|---------|-------------|
-| **FileReadException** | Demonstrates handling IOException when reading a file named "data.txt". If file exists, prints its contents; if not found, displays "File not found" |
-| **DivisionException** | Handles ArithmeticException for division by zero and InputMismatchException for non-numeric input. Takes two numbers from user and performs division with proper error handling |
-| **InvalidAgeException** | Creates a custom InvalidAgeException for validating user age. Throws exception if age is below 18, displays "Age must be 18 or above" |
-| **ArrayOperations** | Demonstrates handling ArrayIndexOutOfBoundsException and NullPointerException. Performs array operations with comprehensive error handling |
-| **TryWithResources** | Uses try-with-resources to automatically close BufferedReader after reading "info.txt". Ensures proper resource cleanup and handles IOException |
-| **InterestCalculator** | Demonstrates exception propagation using throws keyword. Calculates interest with validation for negative amounts and rates |
-| **FinallyDemo** | Shows guaranteed execution of finally block after exception handling. Performs division with ArithmeticException handling and always prints "Operation completed" |
-| **ExceptionPropagation** | Demonstrates exception propagation through multiple method calls. Shows how exceptions propagate from method1() → method2() → main() |
-| **NestedTryCatch** | Uses nested try-catch blocks to handle ArrayIndexOutOfBoundsException and ArithmeticException. Performs array access and division with comprehensive error handling |
-| **BankTransactionSystem** | Complete banking system with custom InsufficientBalanceException. Handles withdrawal operations with balance validation and negative amount checks |
-
----
-
-## 🔍 Java Regex Examples
-
-This section provides comprehensive examples of **Java Regular Expressions (Regex)** for string validation, extraction, and manipulation, along with practical pattern matching techniques.
-
-### 🔐 Validation Problems
-
-| Example | Description | Validation Rules |
-|---------|-------------|------------------|
-| **UsernameValidator** | Validates username format | Letters, numbers, underscores only; must start with letter; 5-15 characters |
-| **LicensePlateValidator** | Validates license plate format | Two uppercase letters followed by four digits (e.g., AB1234) |
-| **HexColorValidator** | Validates hex color codes | Starts with # followed by 6 hexadecimal characters |
-| **IPAddressValidator** | Validates IPv4 addresses | Four groups of numbers (0-255) separated by dots |
-| **CreditCardValidator** | Validates credit card numbers | Visa: starts with 4, 16 digits; MasterCard: starts with 5, 16 digits |
-| **SSNValidator** | Validates Social Security Numbers | Format: XXX-XX-XXXX with proper digit validation |
-
-### 📊 Extraction Problems
-
-| Example | Description | Extracts |
-|---------|-------------|----------|
-| **EmailExtractor** | Extracts all email addresses from text | All email addresses in standard format |
-| **CapitalizedWordsExtractor** | Extracts capitalized words from sentences | Words starting with uppercase letters |
-| **DateExtractor** | Extracts dates in dd/mm/yyyy format | Dates matching day/month/year pattern |
-| **LinkExtractor** | Extracts URLs from web page text | HTTP/HTTPS links |
-| **ProgrammingLanguageExtractor** | Extracts programming language names | Known programming languages from text |
-| **CurrencyExtractor** | Extracts currency values | Dollar amounts and decimal numbers |
-| **RepeatingWordsFinder** | Finds repeating words in sentences | Words that appear more than once |
-
-### 🔄 String Modification Problems
-
-| Example | Description | Function |
-|---------|-------------|----------|
-| **SpaceNormalizer** | Replaces multiple spaces with single space | Normalizes whitespace in text |
-| **BadWordCensor** | Censors inappropriate words | Replaces bad words with asterisks (****) |
-
-### 🎯 Key Features
-
-- **Beginner-friendly**: Simple, well-commented code with clear examples
-- **Interactive input**: Most programs accept user input for testing
-- **Test cases**: Each validator includes built-in test examples
-- **Real-world patterns**: Practical regex patterns used in industry applications
-- **Comprehensive coverage**: From basic validation to advanced extraction techniques
-
----
-
-## 🧪 JUnit Testing Examples
-
-This section contains a comprehensive Maven project with 13 JUnit testing problems, organized into basic and advanced categories. Each problem is implemented with beginner-friendly Java code and comprehensive test cases.
-
-### Project Structure
+## 📁 Repository Structure
 
 ```
-JavaRegexAndJunit/JavaJunit/
-├── src/
-│   ├── main/java/com/junit/examples/
-│   │   ├── Calculator.java
-│   │   ├── StringUtils.java
-│   │   ├── ListManager.java
-│   │   ├── ExceptionHandler.java
-│   │   ├── DatabaseConnection.java
-│   │   ├── NumberUtils.java
-│   │   ├── PerformanceTask.java
-│   │   ├── FileProcessor.java
-│   │   ├── BankAccount.java
-│   │   ├── PasswordValidator.java
-│   │   ├── TemperatureConverter.java
-│   │   ├── DateFormatter.java
-│   │   └── UserRegistration.java
-│   └── test/java/com/junit/examples/
-│       ├── CalculatorTest.java
-│       ├── StringUtilsTest.java
-│       ├── ListManagerTest.java
-│       ├── ExceptionHandlerTest.java
-│       ├── DatabaseConnectionTest.java
-│       ├── NumberUtilsTest.java
-│       ├── PerformanceTaskTest.java
-│       ├── FileProcessorTest.java
-│       ├── BankAccountTest.java
-│       ├── PasswordValidatorTest.java
-│       ├── TemperatureConverterTest.java
-│       ├── DateFormatterTest.java
-│       └── UserRegistrationTest.java
-├── pom.xml
-└── README.md
+BridgeLabz-SIPP-Training/
+├── PseudoCode/                    # All pseudo-code solutions
+│   ├── Day 1 - Basic Problems/
+│   │   ├── SmartFarmingSystem.txt
+│   │   ├── OnlineQuizTimer.txt
+│   │   ├── JobScheduler.txt
+│   │   ├── OnlineStoreCartSystem.txt
+│   │   ├── HospitalDepartmentMapper.txt
+│   │   └── (6 total files)
+│   ├──
+│   ├── Day 2 - Intermediate Problems/
+│   │   ├── FoodDeliverySystem.txt
+│   │   ├── MedicalRecordManager.txt
+│   │   ├── PatientRecordHashing.txt
+│   │   ├── MazeSolverBot.txt
+│   │   ├── LibraryBookFilter.txt
+│   │   ├── PaymentProcessor.txt
+│   │   └── (6 total files)
+│   ├──
+│   ├── Day 3 - Advanced Problems/
+│   │   ├── BankingPortal.txt
+│   │   ├── VehicleRentalSystem.txt
+│   │   ├── FlightPriceAnalyzer.txt
+│   │   ├── CrimePredictionHeatmap.txt
+│   │   ├── CollegeCourseRegistration.txt
+│   │   ├── DigitalWalletTransactionsReport.txt
+│   │   └── (6 total files)
+│   └──
+├── readme.md                      # This documentation file
+└──
 ```
 
-### Basic JUnit Problems (1-8)
+## 📚 Problem Categories
 
-#### 1. Calculator Class Testing
-- **File**: `Calculator.java` and `CalculatorTest.java`
-- **Methods**: add, subtract, multiply, divide
-- **Features**: Basic arithmetic operations with exception handling for division by zero
+### Day 1 - Foundation Level
+**Focus**: Basic OOPs concepts, fundamental data structures
+- **Smart Farming System** - Abstract classes and inheritance
+- **Online Quiz Timer** - Circular array implementation
+- **Job Scheduler** - Priority queue with custom objects
+- **Online Store Cart System** - Collections and generics
+- **Hospital Department Mapper** - Map with List values
 
-#### 2. String Utilities Testing
-- **File**: `StringUtils.java` and `StringUtilsTest.java`
-- **Methods**: reverse, isPalindrome, toUpperCase
-- **Features**: String manipulation with null safety
+### Day 2 - Intermediate Level
+**Focus**: Advanced OOPs, data structures, algorithmic thinking
+- **Food Delivery System** - Composition design pattern
+- **Medical Record Manager** - Interfaces and polymorphism
+- **Patient Record Hashing** - HashMap CRUD operations
+- **Maze Solver Bot** - Recursion and backtracking algorithms
+- **Library Book Filter** - Java Streams and Lambda expressions
+- **Payment Processor** - Generic interfaces and implementations
 
-#### 3. List Operations Testing
-- **File**: `ListManager.java` and `ListManagerTest.java`
-- **Methods**: addElement, removeElement, getSize
-- **Features**: List management with proper null checks
+### Day 3 - Advanced Level
+**Focus**: Complex system design, advanced algorithms, enterprise patterns
 
-#### 4. Exception Handling Testing
-- **File**: `ExceptionHandler.java` and `ExceptionHandlerTest.java`
-- **Method**: divide (with ArithmeticException)
-- **Features**: Testing exception throwing and handling
+#### Java OOPs Problems
+- **🟡 Banking Portal (Moderate)**
+  - Base Account class with SavingAccount and CurrentAccount subclasses
+  - Method overriding for withdrawal rules
+  - Banking portal management system
 
-#### 5. @BeforeEach and @AfterEach Annotations
-- **File**: `DatabaseConnection.java` and `DatabaseConnectionTest.java`
-- **Methods**: connect, disconnect
-- **Features**: Database connection lifecycle management
+- **🔴 Vehicle Rental System (Difficult)**
+  - Abstract vehicle types with inheritance hierarchy
+  - Rentable interface implementation
+  - Factory pattern for vehicle creation
+  - Complex rental transaction management
 
-#### 6. Parameterized Tests
-- **File**: `NumberUtils.java` and `NumberUtilsTest.java`
-- **Method**: isEven
-- **Features**: Testing with multiple input values using @ParameterizedTest
+#### Data Structures & Algorithms
+- **🟡 Flight Price Analyzer (Moderate)**
+  - Custom comparators for sorting
+  - Merge Sort implementation for flight data
+  - Multi-criteria sorting (price and duration)
 
-#### 7. Performance Testing with @Timeout
-- **File**: `PerformanceTask.java` and `PerformanceTaskTest.java`
-- **Method**: longRunningTask
-- **Features**: Testing method execution time limits
+- **🔴 Crime Prediction Heatmap (Difficult)**
+  - Graph representation of city zones
+  - DFS algorithm for high-risk area detection
+  - Crime data analysis and prediction system
 
-#### 8. File Handling Testing
-- **File**: `FileProcessor.java` and `FileProcessorTest.java`
-- **Methods**: writeToFile, readFromFile
-- **Features**: File I/O operations with proper cleanup
+#### Collections, Generics, Streams
+- **🟡 College Course Registration (Moderate)**
+  - Multimap structure: Map<Course, List<Student>>
+  - Student and course management
+  - Enrollment tracking and display
 
-### Advanced JUnit Problems (1-5)
+- **🔴 Digital Wallet Transactions Report (Difficult)**
+  - Advanced stream operations for grouping and aggregation
+  - Monthly merchant summaries
+  - Transaction trend analysis
+  - Comprehensive financial reporting
 
-#### 1. Banking Transactions Testing
-- **File**: `BankAccount.java` and `BankAccountTest.java`
-- **Methods**: deposit, withdraw, getBalance
-- **Features**: Banking operations with balance validation and insufficient funds handling
+## 🎯 Learning Objectives
 
-#### 2. Password Strength Validator Testing
-- **File**: `PasswordValidator.java` and `PasswordValidatorTest.java`
-- **Method**: isValidPassword
-- **Features**: Password validation with rules for length, uppercase letters, and digits
+### Java OOPs Concepts
+- **Inheritance**: Abstract classes, method overriding
+- **Polymorphism**: Interface implementation, dynamic binding
+- **Encapsulation**: Private fields, public methods, data hiding
+- **Composition**: HAS-A relationships, complex object structures
+- **Design Patterns**: Factory pattern, composition over inheritance
 
-#### 3. Temperature Converter Testing
-- **File**: `TemperatureConverter.java` and `TemperatureConverterTest.java`
-- **Methods**: celsiusToFahrenheit, fahrenheitToCelsius
-- **Features**: Temperature conversion between Celsius and Fahrenheit
+### Data Structures & Algorithms
+- **Linear Structures**: Arrays, Lists, Queues, Stacks
+- **Tree Structures**: Priority queues, binary heaps
+- **Graph Structures**: Adjacency lists, DFS traversal
+- **Sorting Algorithms**: Merge sort, custom comparators
+- **Searching**: Hash-based lookups, graph traversal
 
-#### 4. Date Formatter Testing
-- **File**: `DateFormatter.java` and `DateFormatterTest.java`
-- **Method**: formatDate
-- **Features**: Date format conversion from yyyy-MM-dd to dd-MM-yyyy
-
-#### 5. User Registration Testing
-- **File**: `UserRegistration.java` and `UserRegistrationTest.java`
-- **Method**: registerUser
-- **Features**: User registration with validation for username, email, and password
-
-### How to Run the Tests
-
-1. **Navigate to JUnit project directory**:
-   ```bash
-   cd JavaRegexAndJunit/JavaJunit
-   ```
-
-2. **Using Maven**:
-   ```bash
-   mvn test
-   ```
-
-3. **Using Maven with specific test**:
-   ```bash
-   mvn test -Dtest=CalculatorTest
-   ```
-
-4. **Using Maven with specific method**:
-   ```bash
-   mvn test -Dtest=CalculatorTest#testAdd
-   ```
-
-### Dependencies
-
-The JUnit project uses JUnit 5 (Jupiter) with the following dependencies:
-- junit-jupiter-engine: 5.9.2
-- junit-jupiter-api: 5.9.2
-- junit-jupiter-params: 5.9.2
-
-### Learning Outcomes
-
-After completing these problems, you'll understand:
-- Basic JUnit test structure and assertions
-- Exception testing in JUnit
-- Test lifecycle management with @BeforeEach and @AfterEach
-- Parameterized testing with multiple inputs
-- Performance testing with @Timeout
-- File I/O testing
-- Complex validation testing
-- Banking and business logic testing
-
----
-
-## 🌿 Other Branches
-
-This repository also contains code related to the following branches:
-
-| Branch | Focus Area |
-|--------|------------|
-| **AdvanceDSA** | Advanced Data Structures and Algorithms |
-| **CoreJava** | Core Java concepts and programming |
-| **DSA** | Data Structures and Algorithms |
-| **OOPS** | Object-Oriented Programming concepts |
-| **WorkShop** | Various workshop projects and exercises |
-
----
+### Collections, Generics, Streams
+- **Collections Framework**: Map, List, Set implementations
+- **Generics**: Type safety, generic classes and methods
+- **Stream API**: Filtering, mapping, reducing operations
+- **Lambda Expressions**: Functional programming concepts
+- **Grouping & Aggregation**: Collectors, groupingBy operations
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Java 8 or higher
-- IDE (IntelliJ IDEA, Eclipse, or VS Code with Java extension)
-- Git (for cloning the repository)
-- Maven (for JUnit testing project)
+- Basic understanding of Java programming
+- Familiarity with object-oriented concepts
+- Understanding of basic data structures
 
-### Running the Examples
+### How to Use
+1. **Study the Pseudo-code**: Each file contains detailed pseudo-code with comments
+2. **Implement in Java**: Convert pseudo-code to actual Java implementations
+3. **Test Your Solutions**: Create test cases based on the provided examples
+4. **Extend Functionality**: Add additional features beyond the basic requirements
 
-1. **Clone the repository**:
-   ```bash
-   git clone [repository-url]
-   cd BridgeLabz-SIPP-Training
-   ```
-
-2. **Compile and run any example**:
-   ```bash
-   javac JavaStreams/BufferedStreamCopy.java
-   java JavaStreams.BufferedStreamCopy
-   ```
-
-3. **Run JUnit tests**:
-   ```bash
-   cd JavaRegexAndJunit/JavaJunit
-   mvn test
-   ```
-
-4. **Using IDE**:
-   - Import the project as a Java project
-   - Each example has a `main` method for independent execution
-   - For JUnit tests, right-click on test classes and select "Run Tests"
-
----
-
-## 📁 Project Structure
-
-```
-BridgeLabz-SIPP-Training/
-├── Collections/           # Java Collections examples
-├── Generics/              # Java Generics examples
-├── JavaLambdaExpression/  # Java Lambda Expressions and Method References
-├── JavaStreams/           # Java I/O and Streams examples
-├── JavaExceptions/        # Java Exception handling examples
-├── JavaRegexAndJunit/     # Java Regex and JUnit testing examples
-│   ├── JavaJunit/         # Maven JUnit testing project
-│   └── *.java             # Individual regex examples
-├── PseudoCode/            # Pseudocode solutions for various problems
-├── out/                   # Compiled output
-├── .idea/                 # IDE configuration
-└── readme.md             # This file
+### Implementation Guidelines
+```java
+// Example structure for implementation
+public class YourImplementation {
+    // Follow the pseudo-code structure
+    // Add proper Java syntax and conventions
+    // Include error handling and validation
+    // Write comprehensive test cases
+}
 ```
 
----
+## 📊 Problem Difficulty Legend
+
+- **🟢 Easy**: Basic concepts, straightforward implementation
+- **🟡 Moderate**: Multiple concepts combined, requires planning
+- **🔴 Difficult**: Complex systems, advanced algorithms, architectural decisions
+
+## 🔧 Development Tools
+
+### Recommended Setup
+- **IDE**: IntelliJ IDEA or Eclipse
+- **Build Tool**: Maven or Gradle
+- **Testing**: JUnit 5 for unit tests
+- **Version Control**: Git for tracking changes
+
+### Testing Approach
+```java
+// Example test structure
+@Test
+public void testBankingPortal() {
+    BankingPortal portal = new BankingPortal();
+    // Test account creation
+    // Test withdrawal rules
+    // Test edge cases
+}
+```
+
+## 📈 Progress Tracking
+
+### Day 1 Completion Checklist
+- [ ] Smart Farming System implemented
+- [ ] Online Quiz Timer tested
+- [ ] Job Scheduler optimized
+- [ ] Online Store Cart System functional
+- [ ] Hospital Department Mapper complete
+
+### Day 2 Completion Checklist
+- [ ] Food Delivery System with composition
+- [ ] Medical Record Manager with interfaces
+- [ ] Patient Record Hashing operations
+- [ ] Maze Solver Bot algorithm working
+- [ ] Library Book Filter with streams
+- [ ] Payment Processor with generics
+
+### Day 3 Completion Checklist
+- [ ] Banking Portal with inheritance
+- [ ] Vehicle Rental System with factory pattern
+- [ ] Flight Price Analyzer with merge sort
+- [ ] Crime Prediction with DFS
+- [ ] Course Registration with multimap
+- [ ] Digital Wallet with stream aggregation
+
+## 🎓 Additional Resources
+
+### Java Documentation
+- [Oracle Java Documentation](https://docs.oracle.com/en/java/)
+- [Java Collections Framework](https://docs.oracle.com/javase/tutorial/collections/)
+- [Java Stream API](https://docs.oracle.com/javase/tutorial/collections/streams/)
+
+### Algorithm Resources
+- [Big O Cheat Sheet](https://www.bigocheatsheet.com/)
+- [GeeksforGeeks Java](https://www.geeksforgeeks.org/java/)
+- [LeetCode Java Problems](https://leetcode.com/tag/java/)
+
+### Best Practices
+- Follow Java naming conventions
+- Write meaningful comments
+- Implement proper error handling
+- Create comprehensive test cases
+- Use appropriate design patterns
 
 ## 🤝 Contributing
 
-Feel free to contribute by:
-- Adding new examples
-- Improving existing code
-- Enhancing documentation
-- Reporting issues
+Feel free to:
+- Submit improvements to pseudo-code
+- Add additional test cases
+- Share implementation approaches
+- Report any issues or suggestions
 
 ---
 
-## 📄 License
+**Total Problems**: 18 (6 per day across 3 days)
+**Topics Covered**: Java OOPs, Data Structures, Algorithms, Collections, Generics, Streams
+**Difficulty Range**: Easy to Advanced
 
-This project is part of the BridgeLabz SIPP Training program.
-
----
-
-**Happy Coding! 🎉**
+Happy Coding! 🚀
