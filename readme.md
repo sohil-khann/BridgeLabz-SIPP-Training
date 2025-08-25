@@ -1,112 +1,45 @@
-# 🌉 BridgeLabz SIPP Java Training
+# BridgeLabz SIPP Training Projects
 
-Welcome to the official repository for my **BridgeLabz SIPP (Summer Immersion Placement Program) Java Training**. This repository documents my week-wise learning journey in Java, including Core Java, OOPs, DSA, and practical workshops.
+This repository contains various Java programming examples and pseudocode solutions developed during the BridgeLabz SIPP Training program.
 
-> 📌 **Status**: Running
+## Day 1: Introduction to Pseudocode
+- Basic programming concepts
+- Algorithm development
+- Problem-solving techniques
 
----
+## Day 2: Control Flow
+- **Selection**: If-else statements, switch cases
+- **Iteration**: For loops, while loops
+- **Jump statements**: Break, continue
 
-## 📁 Repository Structure
+## Day 3: Functions and Arrays
+- Function declaration and calling
+- Array manipulation
+- Searching and sorting algorithms
 
-This repository is organized by branches, each representing a week of focused learning.
-| Branch Name                  | Description                                                                 |
-|-----------------------------|-----------------------------------------------------------------------------|
-| `CoreJava`           | Covers basic Java syntax, control structures, arrays, strings, and I/O.     |
-| `OOPS`                | Focuses on object-oriented programming concepts like classes, inheritance.  |
-| `DSA`                 | Implementation of basic data structures (Stack, Queue, LinkedList, etc).    |
-| `Workshop`            | Workshop projects combining Java concepts in real-world scenarios.          |
-| `GenericsCollections` | Implementation and problems of Generics and Collections Framework in Java.               |
-| `main`                      | Final clean code merged from all branches.                                  |
-
----
-
-## 🚀 Tech Stack
-
-- **Java (Core, OOPs, DSA,AdvanceDSA, Generics, Collections, Exception Handling, I/O)**
-- **Git & GitHub** – Version Control
-- **eclips IDE / IntelliJ IDEA** – Development Environment
-
----
-
-## 📌 Weekly Breakdown
-
-### 🔹 Week 1 – Core Java
-- Variables & Data Types
-- Control Statements
-- Loops, Arrays, Strings
-- Exception Handling, I/O
-
-📂 Branch: [`CoreJava`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/CoreJava)
-
----
-
-### 🔹 Week 2 – Object-Oriented Programming
-- Classes & Objects
-- Inheritance, Polymorphism
-- Abstraction & Interfaces
-- Encapsulation, Constructors
-
-📂 Branch: [`OOPS`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/OOPS)
-
----
-
-### 🔹 Week 3 – Data Structures & Algorithms
-- Arrays, LinkedLists
-- Stacks, Queues
-- Searching, Sorting
-- Time & Space Complexity
-
-📂 Branch: [`DSA`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/DSA)
-
----
-
-### 🔹 Week 4 – Java Workshop
-- Mini Projects using Java concepts
-- Hands-on real-world coding
-- Team collaboration & Git usage
-
-📂 Branch: [`WorkShop`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/WorkShop)
-
----
-### 🔹 Week 5 – Generics & Collections
-- Java Generics
-- Collections Framework
-- List, Set, Map Implementations
-- Custom Generic Classes
-
-📂 Branch: [`GenericsAndCollections`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/GenericsAndCollections)
-
----
-
-### 🔹 Week 6 – Advanced Data Structures & Algorithms
-- Trees & Graphs
-- Advanced Sorting Algorithms
-- Dynamic Programming
-- Problem Solving Techniques
-
-📂 Branch: [`AdvanceDSA`](https://github.com/sohil-khann/BridgeLabz-SIPP-Training/tree/AdvanceDSA)
-
----
+## Day 4: Object-Oriented Concepts
+- Classes and objects
+- Inheritance and polymorphism
+- Encapsulation and abstraction
+- Polymorphism
+- Abstraction
+- Inheritance
+- Encapsulation
 
 
-## 🧠 Learning Outcomes
 
-- Solid foundation in **Java Programming**
-- Practical experience in **OOPs** & **DSA**
-- Mastery in using **Git & GitHub**
-- Exposure to **Team Projects & Collaboration**
 
----
+Each day's folder contains:
+- Pseudocode examples
+- Practice problems
+- Solutions
+- Additional resources
 
-## 👨‍💻 Author
+## Repository Structure
 
-**Sohil Khan**  
-- [LinkedIn](https://www.linkedin.com/in/sohil-khan-b39908251/)  
-- [GitHub](https://github.com/sohil-khann)  
-- 📧 sohilkhan99jait@gmail.com
+The repository is organized into day-wise folders:
+- **Day1_Introduction**
+- **Day2_ControlFlow**
+- **Day3_FunctionsArrays**
+- **Day4_OOP**
 
----
-
-## ⭐ Show Your Support
-
-If you found this helpful or inspiring, please ⭐ the repo and share your feedback!
