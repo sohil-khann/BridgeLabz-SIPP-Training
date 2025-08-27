@@ -32,6 +32,10 @@ BridgeLabz-SIPP-Training/
 │   ├── ...                        # Practical applications of lambdas
 ├── JavaRegexAndJunit/             # Regular Expressions and JUnit Testing examples
 │   ├── ...                        # Regex patterns and JUnit test cases
+├── JavaCollectors/                # Examples of Java 8 Collectors API
+│   ├── ...                        # Collectors for grouping, summarizing, etc.
+├── JavaStreamApi/                 # Examples of Java 8 Stream API and forEach() method
+│   ├── ...                        # Stream operations (filter, map, sorted, limit) and forEach() applications
 ├── JavaStreams/                   # Examples of Java 8 Stream API
 │   ├── ...                        # Stream operations (filter, map, reduce, collect)
 ├── PseudoCode/                    # Detailed pseudo-code solutions for complex problems
@@ -78,6 +82,8 @@ These directories contain actual Java source code (`.java` files) demonstrating 
 -   **JavaFunctionalInterfaces/**: Illustrates the use of built-in and custom functional interfaces introduced in Java 8.
 -   **JavaLambdaExpression/**: Provides examples of using lambda expressions for concise and functional programming.
 -   **JavaRegexAndJunit/**: Contains examples of using Java's regular expression API for pattern matching and text manipulation, alongside JUnit 5 test cases for unit testing.
+-   **JavaCollectors/**: Demonstrates the use of Java 8's `Collectors` class for various reduction operations, such as grouping, partitioning, and summarizing data from streams.
+-   **JavaStreamApi/**: Provides examples of using the Java 8 Stream API for data processing, including `filter()`, `sorted()`, `limit()`, `map()`, and practical applications of the `forEach()` method.
 -   **JavaStreams/**: Showcases the powerful Stream API for processing collections of objects in a declarative way, including operations like filtering, mapping, and reducing.
 
 ## 🎯 Learning Objectives
