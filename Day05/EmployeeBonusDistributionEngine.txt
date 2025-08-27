@@ -1,0 +1,148 @@
+// Employee Bonus Distribution Engine
+
+// Problem Description:
+// Develop a system for an HR analytics team to distribute employee bonuses based on performance ratings.
+// The system needs to process a list of employees (Name, Department, Performance Rating, Base Salary).
+// Using Java Streams, it should group employees by department, calculate the total bonus pool for each department,
+// and distribute bonuses proportionally based on performance ratings.
+// A custom collector logic is required: Pool amount = 10% of total department salaries; employees with higher ratings get a bigger share.
+
+// Learning Points:
+// - Advanced use of Java Streams, including custom collectors.
+// - Grouping and aggregating data for complex business logic.
+// - Applying generics for flexible data handling.
+
+// ----------------------------------------------------------------------------------------------------
+
+// 1. Employee Class
+// Represents an employee with relevant details for bonus distribution.
+CLASS Employee:
+    name: STRING
+    department: STRING
+    performanceRating: INTEGER // 1-5
+    baseSalary: DOUBLE
+
+    // Constructor
+    CONSTRUCTOR Employee(name: STRING, department: STRING, performanceRating: INTEGER, baseSalary: DOUBLE):
+        THIS.name = name
+        THIS.department = department
+        THIS.performanceRating = performanceRating
+        THIS.baseSalary = baseSalary
+
+    // Getters
+    METHOD getName() RETURNS STRING:
+        RETURN THIS.name
+    METHOD getDepartment() RETURNS STRING:
+        RETURN THIS.department
+    METHOD getPerformanceRating() RETURNS INTEGER:
+        RETURN THIS.performanceRating
+    METHOD getBaseSalary() RETURNS DOUBLE:
+        RETURN THIS.baseSalary
+
+    // Override toString for easy printing
+    METHOD toString() RETURNS STRING:
+        RETURN "Employee(" + name + ", Dept: " + department + ", Rating: " + performanceRating + ", Salary: " + baseSalary + ")"
+
+// ----------------------------------------------------------------------------------------------------
+
+// 2. BonusDistributionEngine Class
+// Handles the logic for calculating and distributing bonuses.
+CLASS BonusDistributionEngine:
+
+    // Method to distribute bonuses based on employee performance.
+    // PARAMETER employees: A LIST of Employee objects.
+    // RETURNS: A MAP where key is Department (STRING) and value is another MAP
+    //          (key is Employee Name (STRING), value is Bonus Amount (DOUBLE)).
+    METHOD distributeBonuses(employees: LIST<Employee>) RETURNS MAP<STRING, MAP<STRING, DOUBLE>>:
+        // Group employees by department and calculate total salary and total rating sum for each department
+        departmentData: MAP<STRING, OBJECT> = employees.STREAM()
+            .COLLECT(
+                GROUPING_BY(Employee::getDepartment, COLLECTING_AND_THEN(
+                    TO_LIST(),
+                    deptEmployees => {
+                        totalSalary = deptEmployees.STREAM()
+                                        .MAP_TO_DOUBLE(Employee::getBaseSalary)
+                                        .SUM()
+                        totalRatingSum = deptEmployees.STREAM()
+                                        .MAP_TO_INT(Employee::getPerformanceRating)
+                                        .SUM()
+                        RETURN NEW OBJECT("employees": deptEmployees, "totalSalary": totalSalary, "totalRatingSum": totalRatingSum)
+                    }
+                ))
+            )
+
+        bonusReport: MAP<STRING, MAP<STRING, DOUBLE>> = NEW MAP<STRING, MAP<STRING, DOUBLE>>()
+
+        // Iterate through each department to calculate and distribute bonuses
+        departmentData.FOR_EACH((department, data) => {
+            deptEmployees = data.GET("employees")
+            totalSalary = data.GET("totalSalary")
+            totalRatingSum = data.GET("totalRatingSum")
+
+            bonusPool = totalSalary * 0.10 // 10% of total department salaries
+
+            departmentBonus: MAP<STRING, DOUBLE> = NEW MAP<STRING, DOUBLE>()
+
+            IF totalRatingSum > 0:
+                deptEmployees.FOR_EACH(employee => {
+                    // Bonus = (Employee's Rating / Total Ratings in Dept) * Bonus Pool
+                    employeeBonus = (employee.getPerformanceRating() / totalRatingSum) * bonusPool
+                    departmentBonus.PUT(employee.getName(), employeeBonus)
+                })
+            ELSE:
+                // Handle case where totalRatingSum is 0 (e.g., no employees or all ratings are 0)
+                deptEmployees.FOR_EACH(employee => {
+                    departmentBonus.PUT(employee.getName(), 0.0)
+                })
+
+            bonusReport.PUT(department, departmentBonus)
+        })
+
+        RETURN bonusReport
+
+    // Method to print the bonus distribution report.
+    METHOD printBonusReport(report: MAP<STRING, MAP<STRING, DOUBLE>>):
+        PRINT "\n--- Employee Bonus Distribution Report ---"
+        IF report.IS_EMPTY():
+            PRINT "No bonus data available."
+            RETURN
+
+        report.KEY_SET().FOR_EACH(department => {
+            PRINT "Department: " + department
+            deptBonuses = report.GET(department)
+            deptBonuses.KEY_SET().FOR_EACH(employeeName => {
+                bonus = deptBonuses.GET(employeeName)
+                PRINT "  " + employeeName + ": " + FORMAT_CURRENCY(bonus)
+            })
+            PRINT "------------------------------------"
+        })
+
+// ----------------------------------------------------------------------------------------------------
+
+// 3. Main Program (Example Usage)
+PROGRAM Main:
+    engine = NEW BonusDistributionEngine()
+
+    // Create a list of sample employees
+    employees: LIST<Employee> = NEW LIST<Employee>()
+    employees.ADD(NEW Employee("Alice", "IT", 5, 80000.0))
+    employees.ADD(NEW Employee("Bob", "IT", 3, 70000.0))
+    employees.ADD(NEW Employee("Charlie", "IT", 2, 60000.0))
+    employees.ADD(NEW Employee("David", "Finance", 4, 90000.0))
+    employees.ADD(NEW Employee("Eve", "Finance", 5, 95000.0))
+    employees.ADD(NEW Employee("Frank", "Sales", 3, 75000.0))
+    employees.ADD(NEW Employee("Grace", "Sales", 4, 85000.0))
+
+    // Distribute bonuses
+    bonusReport = engine.distributeBonuses(employees)
+
+    // Print the report
+    engine.printBonusReport(bonusReport)
+
+    // Example of accessing a specific employee's bonus
+    IF bonusReport.CONTAINS_KEY("IT") AND bonusReport.GET("IT").CONTAINS_KEY("Alice"):
+        PRINT "\nAlice's bonus in IT: " + FORMAT_CURRENCY(bonusReport.GET("IT").GET("Alice"))
+
+    IF bonusReport.CONTAINS_KEY("Finance") AND bonusReport.GET("Finance").CONTAINS_KEY("Eve"):
+        PRINT "Eve's bonus in Finance: " + FORMAT_CURRENCY(bonusReport.GET("Finance").GET("Eve"))
+END PROGRAM

@@ -1,0 +1,158 @@
+```pseudocode
+// Distributed Load Balancer – Queue Simulation (Round-Robin with Dynamic Nodes)
+// Concepts: Data Structures (Queue), Simulation
+
+// 1. Request Class
+CLASS Request:
+    PRIVATE String requestId
+
+    CONSTRUCTOR(String id):
+        SET this.requestId = id
+
+    METHOD getRequestId() RETURNS String:
+        RETURN this.requestId
+END CLASS
+
+// 2. Server Class
+CLASS Server:
+    PRIVATE String serverId
+    PRIVATE Integer activeRequestsCount = 0
+
+    CONSTRUCTOR(String id):
+        SET this.serverId = id
+
+    METHOD getServerId() RETURNS String:
+        RETURN this.serverId
+
+    METHOD incrementActiveRequests():
+        SET this.activeRequestsCount = this.activeRequestsCount + 1
+
+    METHOD decrementActiveRequests():
+        IF this.activeRequestsCount > 0:
+            SET this.activeRequestsCount = this.activeRequestsCount - 1
+
+    METHOD getActiveRequestsCount() RETURNS Integer:
+        RETURN this.activeRequestsCount
+
+    METHOD toString() RETURNS String:
+        RETURN "Server(" + serverId + ")"
+END CLASS
+
+// 3. LoadBalancer Class
+CLASS LoadBalancer:
+    PRIVATE Queue<Server> activeServers // Using a Queue for round-robin
+    PRIVATE Map<String, String> requestToServerMap // To store request -> server mapping
+
+    CONSTRUCTOR(List<Server> initialServers):
+        SET this.activeServers = new Queue<Server>()
+        FOR EACH server IN initialServers:
+            ADD server to this.activeServers
+        END FOR
+        SET this.requestToServerMap = new Map<String, String>()
+
+    METHOD addServer(Server newServer):
+        IF newServer IS NOT IN activeServers:
+            ADD newServer to this.activeServers
+            PRINT "[LoadBalancer] Added server: " + newServer.getServerId()
+        ELSE:
+            PRINT "[LoadBalancer] Server " + newServer.getServerId() + " already exists."
+
+    METHOD removeServer(String serverIdToRemove):
+        SET tempQueue = new Queue<Server>()
+        SET removed = FALSE
+        WHILE activeServers IS NOT EMPTY:
+            SET currentServer = activeServers.dequeue()
+            IF currentServer.getServerId() EQUALS serverIdToRemove:
+                SET removed = TRUE
+                PRINT "[LoadBalancer] Removed server: " + currentServer.getServerId()
+            ELSE:
+                ADD currentServer to tempQueue
+        END WHILE
+        SET activeServers = tempQueue
+        IF NOT removed:
+            PRINT "[LoadBalancer] Server " + serverIdToRemove + " not found."
+
+    METHOD distributeRequest(Request request) RETURNS String:
+        IF activeServers IS EMPTY:
+            PRINT "[LoadBalancer] No active servers to handle request " + request.getRequestId()
+            RETURN "NO_SERVER_AVAILABLE"
+
+        // Round-robin logic: get server from front, move to back
+        SET assignedServer = activeServers.dequeue()
+        ADD assignedServer to activeServers // Move to back
+
+        assignedServer.incrementActiveRequests()
+        ADD request.getRequestId() -> assignedServer.getServerId() to requestToServerMap
+
+        RETURN assignedServer.getServerId()
+
+    METHOD printRequestToServerMapping():
+        PRINT "\n--- Request to Server Mapping ---"
+        FOR EACH entry IN requestToServerMap:
+            PRINT "Request " + entry.KEY + " -> " + entry.VALUE
+        END FOR
+
+    METHOD printServerStatus():
+        PRINT "\n--- Current Server Status ---"
+        FOR EACH server IN activeServers:
+            PRINT server.getServerId() + " (Active Requests: " + server.getActiveRequestsCount() + ")"
+        END FOR
+END CLASS
+
+// 4. Main Program / Simulation
+PROGRAM Main:
+    // Initial servers
+    SET server1 = new Server("S1")
+    SET server2 = new Server("S2")
+    SET server3 = new Server("S3")
+    SET initialServers = new List<Server>(server1, server2, server3)
+
+    SET loadBalancer = new LoadBalancer(initialServers)
+    loadBalancer.printServerStatus()
+
+    PRINT "\n--- Processing Initial Requests ---"
+    // Requests: R1 -> S1, R2 -> S2, R3 -> S3
+    FOR i FROM 1 TO 3:
+        SET request = new Request("R" + i)
+        SET assignedServerId = loadBalancer.distributeRequest(request)
+        PRINT "Request " + request.getRequestId() + " assigned to " + assignedServerId
+    END FOR
+    loadBalancer.printRequestToServerMapping()
+    loadBalancer.printServerStatus()
+
+    PRINT "\n--- Adding a new server S4 ---"
+    SET server4 = new Server("S4")
+    loadBalancer.addServer(server4)
+    loadBalancer.printServerStatus()
+
+    PRINT "\n--- Processing More Requests ---"
+    // Requests continue: R4 -> S1, R5 -> S2, R6 -> S3, R7 -> S4, R8 -> S1
+    FOR i FROM 4 TO 8:
+        SET request = new Request("R" + i)
+        SET assignedServerId = loadBalancer.distributeRequest(request)
+        PRINT "Request " + request.getRequestId() + " assigned to " + assignedServerId
+    END FOR
+    loadBalancer.printRequestToServerMapping()
+    loadBalancer.printServerStatus()
+
+    PRINT "\n--- Removing server S2 ---"
+    loadBalancer.removeServer("S2")
+    loadBalancer.printServerStatus()
+
+    PRINT "\n--- Processing Requests After Removal ---"
+    // Requests continue, S2 should not be assigned
+    FOR i FROM 9 TO 12:
+        SET request = new Request("R" + i)
+        SET assignedServerId = loadBalancer.distributeRequest(request)
+        PRINT "Request " + request.getRequestId() + " assigned to " + assignedServerId
+    END FOR
+    loadBalancer.printRequestToServerMapping()
+    loadBalancer.printServerStatus()
+
+    // Simulate server S1 completing some requests
+    server1.decrementActiveRequests()
+    server1.decrementActiveRequests()
+    PRINT "\n--- Server S1 completed 2 requests ---"
+    loadBalancer.printServerStatus()
+END PROGRAM
+```

@@ -1,0 +1,166 @@
+// Autocomplete Search Suggestions - Trie Implementation
+
+// Problem Description:
+// Implement an autocomplete search suggestion system for an online food delivery service (FoodKart).
+// The system should use a Trie (prefix tree) to store millions of keywords (restaurant names, cuisines, dish names).
+// It must efficiently return top N relevant matches for a given prefix, allow dynamic insertion of new keywords,
+// and optionally maintain a popularity score for each keyword to sort suggestions by popularity.
+
+// Learning Points:
+// - Trie for fast prefix-based lookups.
+// - Balancing time complexity vs. real-time updates.
+// - Extending Data Structures and Algorithms (DSA) for business-focused features like ranking.
+
+// ----------------------------------------------------------------------------------------------------
+
+// 1. TrieNode Class
+// Represents a node in the Trie.
+CLASS TrieNode:
+    // Map to store children nodes, where key is a character and value is a TrieNode.
+    children: MAP<CHAR, TrieNode>
+    // Flag to indicate if this node marks the end of a valid keyword.
+    isEndOfWord: BOOLEAN
+    // Stores the full keyword if this is the end of a word.
+    word: STRING
+    // Popularity score for the keyword ending at this node.
+    popularity: INTEGER
+
+    // Constructor
+    CONSTRUCTOR TrieNode():
+        children = NEW MAP<CHAR, TrieNode>()
+        isEndOfWord = FALSE
+        word = ""
+        popularity = 0
+
+// ----------------------------------------------------------------------------------------------------
+
+// 2. AutocompleteTrie Class
+// Implements the Trie data structure for autocomplete suggestions.
+CLASS AutocompleteTrie:
+    // The root node of the Trie.
+    root: TrieNode
+
+    // Constructor
+    CONSTRUCTOR AutocompleteTrie():
+        root = NEW TrieNode()
+
+    // Method to insert a keyword into the Trie.
+    // PARAMETER keyword: The string to insert.
+    // PARAMETER popularityScore: The initial popularity score for the keyword.
+    METHOD insert(keyword: STRING, popularityScore: INTEGER):
+        currentNode = root
+        FOR EACH char IN keyword:
+            IF char NOT IN currentNode.children:
+                currentNode.children.PUT(char, NEW TrieNode())
+            currentNode = currentNode.children.GET(char)
+        currentNode.isEndOfWord = TRUE
+        currentNode.word = keyword
+        currentNode.popularity = popularityScore
+
+    // Method to search for top N suggestions based on a given prefix.
+    // PARAMETER prefix: The prefix to search for.
+    // PARAMETER N: The maximum number of suggestions to return.
+    // RETURNS: A LIST of strings representing the top N suggestions, sorted by popularity.
+    METHOD search(prefix: STRING, N: INTEGER) RETURNS LIST<STRING>:
+        currentNode = root
+        FOR EACH char IN prefix:
+            IF char NOT IN currentNode.children:
+                RETURN NEW LIST<STRING>() // No words with this prefix
+            currentNode = currentNode.children.GET(char)
+
+        // Collect all words from the current node's subtree
+        suggestions: LIST<TrieNode>
+        CALL collectAllWords(currentNode, suggestions)
+
+        // Sort suggestions by popularity in descending order
+        suggestions.SORT_BY(node => node.popularity, DESCENDING)
+
+        // Extract top N words
+        result: LIST<STRING>
+        FOR i FROM 0 TO MIN(N - 1, suggestions.SIZE() - 1):
+            result.ADD(suggestions.GET(i).word)
+        RETURN result
+
+    // Helper method to recursively collect all words from a given TrieNode's subtree.
+    // PARAMETER node: The current TrieNode to start collecting from.
+    // PARAMETER collectedWords: A LIST to store the TrieNodes of found words.
+    METHOD collectAllWords(node: TrieNode, collectedWords: LIST<TrieNode>):
+        IF node.isEndOfWord:
+            collectedWords.ADD(node)
+
+        FOR EACH childNode IN node.children.VALUES():
+            CALL collectAllWords(childNode, collectedWords)
+
+    // Method to update the popularity score of an existing keyword.
+    // PARAMETER keyword: The keyword whose popularity needs to be updated.
+    // PARAMETER newPopularity: The new popularity score.
+    METHOD updatePopularity(keyword: STRING, newPopularity: INTEGER):
+        currentNode = root
+        FOR EACH char IN keyword:
+            IF char NOT IN currentNode.children:
+                PRINT "Keyword not found: " + keyword
+                RETURN
+            currentNode = currentNode.children.GET(char)
+
+        IF currentNode.isEndOfWord AND currentNode.word == keyword:
+            currentNode.popularity = newPopularity
+        ELSE:
+            PRINT "Keyword not found: " + keyword
+
+// ----------------------------------------------------------------------------------------------------
+
+// 3. Main Program (Example Usage)
+PROGRAM Main:
+    trie = NEW AutocompleteTrie()
+
+    // Stored keywords with initial popularity
+    trie.insert("pizza hut", 100)
+    trie.insert("pizza point", 80)
+    trie.insert("pita bread", 120)
+    trie.insert("pizzeria", 90)
+    trie.insert("apple", 50)
+    trie.insert("apricot", 40)
+    trie.insert("pineapple cafe", 110)
+
+    PRINT "\n--- Initial Suggestions ---"
+    // User types "pi"
+    suggestions1 = trie.search("pi", 3)
+    PRINT "Suggestions for 'pi': " + suggestions1.TO_STRING()
+    // Expected: ["pita bread", "pizza hut", "pineapple cafe"] (order depends on initial popularity)
+
+    // User types "pizz"
+    suggestions2 = trie.search("pizz", 5)
+    PRINT "Suggestions for 'pizz': " + suggestions2.TO_STRING()
+    // Expected: ["pizza hut", "pizza point"]
+
+    // User types "app"
+    suggestions3 = trie.search("app", 5)
+    PRINT "Suggestions for 'app': " + suggestions3.TO_STRING()
+    // Expected: ["apple", "apricot"]
+
+    PRINT "\n--- Updating Popularity ---"
+    // If "pita bread" gets more orders, update its popularity
+    trie.updatePopularity("pita bread", 150)
+    PRINT "Updated 'pita bread' popularity to 150."
+
+    // Re-check suggestions for "pi" after popularity update
+    suggestions4 = trie.search("pi", 3)
+    PRINT "Suggestions for 'pi' after update: " + suggestions4.TO_STRING()
+    // Expected: ["pita bread", "pineapple cafe", "pizza hut"] (order reflects new popularity)
+
+    PRINT "\n--- Adding New Keyword ---"
+    // Adding a new restaurant "pineapple cafe" (already added in initial insert for demonstration)
+    // Let's add another new one: "pizza palace"
+    trie.insert("pizza palace", 130)
+    PRINT "Added 'pizza palace' with popularity 130."
+
+    // Check suggestions for "pi" again
+    suggestions5 = trie.search("pi", 5)
+    PRINT "Suggestions for 'pi' after adding 'pizza palace': " + suggestions5.TO_STRING()
+    // Expected: ["pita bread", "pizza palace", "pineapple cafe", "pizza hut", "pizza point"]
+
+    // Search for a non-existent prefix
+    suggestions6 = trie.search("xyz", 3)
+    PRINT "Suggestions for 'xyz': " + suggestions6.TO_STRING()
+    // Expected: []
+END PROGRAM

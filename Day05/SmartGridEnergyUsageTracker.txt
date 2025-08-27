@@ -1,0 +1,143 @@
+// Smart Grid Energy Usage Tracker
+
+// Problem Description:
+// Develop a system for a Smart City Energy Department to manage electricity consumption data.
+// The system needs to store data in a nested Map structure: Map<Zone, Map<Day, List<Reading>>>.
+// It should identify peak load times for each zone using Java Streams, aggregating consumption data
+// for each day and finding the peak usage value per zone.
+
+// Learning Points:
+// - Effective use of Map, Nested Map, List, Streams, and Generics for complex data structures.
+// - Aggregating and processing data using Java Streams for real-world analytical challenges.
+
+// ----------------------------------------------------------------------------------------------------
+
+// 1. Reading Class
+// Represents an energy reading from a smart meter.
+CLASS Reading:
+    // The energy consumption value in kW.
+    value: DOUBLE
+    // The timestamp of the reading.
+    timestamp: DATETIME
+
+    // Constructor
+    CONSTRUCTOR Reading(value: DOUBLE, timestamp: DATETIME):
+        THIS.value = value
+        THIS.timestamp = timestamp
+
+    // Getter for value
+    METHOD getValue() RETURNS DOUBLE:
+        RETURN THIS.value
+
+    // Override toString for easy printing
+    METHOD toString() RETURNS STRING:
+        RETURN "Reading(" + value + "kW at " + timestamp.FORMAT("HH:mm") + ")"
+
+// ----------------------------------------------------------------------------------------------------
+
+// 2. SmartGridEnergyUsageTracker Class
+// Manages and analyzes energy consumption data.
+CLASS SmartGridEnergyUsageTracker:
+    // Stores energy data: Map<Zone, Map<Day, List<Reading>>>
+    // Zone: STRING (e.g., "Zone-A")
+    // Day: LocalDate (e.g., 2025-08-01)
+    // List<Reading>: List of Reading objects for that zone and day
+    energyData: MAP<STRING, MAP<DATE, LIST<Reading>>>
+
+    // Constructor
+    CONSTRUCTOR SmartGridEnergyUsageTracker():
+        energyData = NEW MAP<STRING, MAP<DATE, LIST<Reading>>>()
+
+    // Method to add a reading to the system.
+    // PARAMETER zone: The city zone (e.g., "Zone-A").
+    // PARAMETER date: The date of the reading.
+    // PARAMETER reading: The Reading object to add.
+    METHOD addReading(zone: STRING, date: DATE, reading: Reading):
+        IF NOT energyData.CONTAINS_KEY(zone):
+            energyData.PUT(zone, NEW MAP<DATE, LIST<Reading>>>())
+
+        zoneData = energyData.GET(zone)
+        IF NOT zoneData.CONTAINS_KEY(date):
+            zoneData.PUT(date, NEW LIST<Reading>>>())
+
+        zoneData.GET(date).ADD(reading)
+
+    // Method to find and report peak usage for each zone and day using Streams.
+    // RETURNS: A Map where key is Zone (STRING) and value is another Map
+    //          (key is Day (DATE), value is Peak Usage (DOUBLE)).
+    METHOD getPeakUsageReport() RETURNS MAP<STRING, MAP<DATE, DOUBLE>>:
+        peakReport: MAP<STRING, MAP<DATE, DOUBLE>> = NEW MAP<STRING, MAP<DATE, DOUBLE>>()
+
+        // Stream over zones
+        energyData.KEY_SET().FOR_EACH(zone => {
+            zoneDailyPeaks: MAP<DATE, DOUBLE> = NEW MAP<DATE, DOUBLE>()
+
+            // Stream over days for each zone
+            energyData.GET(zone).KEY_SET().FOR_EACH(date => {
+                readingsForDay = energyData.GET(zone).GET(date)
+
+                // Use stream to find the maximum reading value for the day
+                peakValue = readingsForDay.STREAM()
+                                        .MAP_TO_DOUBLE(reading => reading.getValue())
+                                        .MAX()
+                                        .OR_ELSE(0.0) // Default to 0.0 if no readings
+
+                zoneDailyPeaks.PUT(date, peakValue)
+            })
+            peakReport.PUT(zone, zoneDailyPeaks)
+        })
+        RETURN peakReport
+
+    // Method to print the detailed peak usage report.
+    METHOD printPeakUsageReport():
+        report = THIS.getPeakUsageReport()
+        PRINT "\n--- Smart Grid Peak Usage Report ---"
+        IF report.IS_EMPTY():
+            PRINT "No data available to generate report."
+            RETURN
+
+        report.KEY_SET().FOR_EACH(zone => {
+            PRINT "Zone: " + zone
+            zoneReport = report.GET(zone)
+            zoneReport.KEY_SET().FOR_EACH(date => {
+                peak = zoneReport.GET(date)
+                PRINT "  Date: " + date.TO_STRING() + ", Peak Usage: " + peak + "kW"
+            })
+        })
+        PRINT "------------------------------------"
+
+// ----------------------------------------------------------------------------------------------------
+
+// 3. Main Program (Example Usage)
+PROGRAM Main:
+    tracker = NEW SmartGridEnergyUsageTracker()
+
+    // Simulate adding data for Zone-A
+    tracker.addReading("Zone-A", DATE.OF(2025, 8, 1), NEW Reading(120.0, DATETIME.OF(2025, 8, 1, 9, 0, 0)))
+    tracker.addReading("Zone-A", DATE.OF(2025, 8, 1), NEW Reading(90.0, DATETIME.OF(2025, 8, 1, 10, 0, 0)))
+    tracker.addReading("Zone-A", DATE.OF(2025, 8, 1), NEW Reading(200.0, DATETIME.OF(2025, 8, 1, 11, 0, 0)))
+    tracker.addReading("Zone-A", DATE.OF(2025, 8, 1), NEW Reading(150.0, DATETIME.OF(2025, 8, 1, 12, 0, 0)))
+
+    tracker.addReading("Zone-A", DATE.OF(2025, 8, 2), NEW Reading(100.0, DATETIME.OF(2025, 8, 2, 9, 0, 0)))
+    tracker.addReading("Zone-A", DATE.OF(2025, 8, 2), NEW Reading(180.0, DATETIME.OF(2025, 8, 2, 10, 0, 0)))
+    tracker.addReading("Zone-A", DATE.OF(2025, 8, 2), NEW Reading(130.0, DATETIME.OF(2025, 8, 2, 11, 0, 0)))
+
+    // Simulate adding data for Zone-B
+    tracker.addReading("Zone-B", DATE.OF(2025, 8, 1), NEW Reading(300.0, DATETIME.OF(2025, 8, 1, 14, 0, 0)))
+    tracker.addReading("Zone-B", DATE.OF(2025, 8, 1), NEW Reading(350.0, DATETIME.OF(2025, 8, 1, 15, 0, 0)))
+    tracker.addReading("Zone-B", DATE.OF(2025, 8, 1), NEW Reading(250.0, DATETIME.OF(2025, 8, 1, 16, 0, 0)))
+
+    tracker.addReading("Zone-B", DATE.OF(2025, 8, 3), NEW Reading(220.0, DATETIME.OF(2025, 8, 3, 10, 0, 0)))
+    tracker.addReading("Zone-B", DATE.OF(2025, 8, 3), NEW Reading(280.0, DATETIME.OF(2025, 8, 3, 11, 0, 0)))
+
+    // Generate and print the peak usage report
+    tracker.printPeakUsageReport()
+
+    // Example of accessing specific peak usage
+    report = tracker.getPeakUsageReport()
+    IF report.CONTAINS_KEY("Zone-A") AND report.GET("Zone-A").CONTAINS_KEY(DATE.OF(2025, 8, 1)):
+        PRINT "\nPeak usage for Zone-A on 2025-08-01: " + report.GET("Zone-A").GET(DATE.OF(2025, 8, 1)) + "kW"
+
+    IF report.CONTAINS_KEY("Zone-B") AND report.GET("Zone-B").CONTAINS_KEY(DATE.OF(2025, 8, 1)):
+        PRINT "Peak usage for Zone-B on 2025-08-01: " + report.GET("Zone-B").GET(DATE.OF(2025, 8, 1)) + "kW"
+END PROGRAM

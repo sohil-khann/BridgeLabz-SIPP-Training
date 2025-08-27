@@ -1,0 +1,211 @@
+```pseudocode
+// Restaurant POS Billing System
+// Concepts: OOPS, Polymorphism, Inheritance, Interfaces
+
+// 1. MenuItem Class
+CLASS MenuItem:
+    PRIVATE String name
+    PRIVATE Double price
+
+    CONSTRUCTOR(String name, Double price):
+        SET this.name = name
+        SET this.price = price
+
+    METHOD getName() RETURNS String:
+        RETURN this.name
+
+    METHOD getPrice() RETURNS Double:
+        RETURN this.price
+END CLASS
+
+// 2. TaxCalculator Interface/Abstract Class
+// Using an interface for flexibility to add new tax types easily
+INTERFACE TaxCalculator:
+    METHOD calculateTax(Double amount) RETURNS Double
+END INTERFACE
+
+// Concrete Tax Implementations
+CLASS FoodTax IMPLEMENTS TaxCalculator:
+    PRIVATE Double GST_RATE = 0.05 // 5% GST
+
+    METHOD calculateTax(Double amount) RETURNS Double:
+        RETURN amount * GST_RATE
+END CLASS
+
+CLASS BeverageTax IMPLEMENTS TaxCalculator:
+    PRIVATE Double GST_RATE = 0.12 // 12% GST
+
+    METHOD calculateTax(Double amount) RETURNS Double:
+        RETURN amount * GST_RATE
+END CLASS
+
+CLASS ImportedTax IMPLEMENTS TaxCalculator:
+    PRIVATE Double GST_RATE = 0.05 // 5% GST
+    PRIVATE Double CUSTOMS_DUTY = 0.10 // Additional 10% customs duty
+
+    METHOD calculateTax(Double amount) RETURNS Double:
+        RETURN (amount * GST_RATE) + (amount * CUSTOMS_DUTY)
+END CLASS
+
+// 3. DiscountPolicy Interface
+INTERFACE DiscountPolicy:
+    METHOD applyDiscount(Double totalAmount) RETURNS Double
+    METHOD getDescription() RETURNS String
+END INTERFACE
+
+// Concrete Discount Implementations
+CLASS NoDiscount IMPLEMENTS DiscountPolicy:
+    METHOD applyDiscount(Double totalAmount) RETURNS Double:
+        RETURN totalAmount
+
+    METHOD getDescription() RETURNS String:
+        RETURN "No Discount Applied"
+END CLASS
+
+CLASS FlatDiscount IMPLEMENTS DiscountPolicy:
+    PRIVATE Double flatAmount = 100.0
+
+    CONSTRUCTOR(Double flatAmount):
+        SET this.flatAmount = flatAmount
+
+    METHOD applyDiscount(Double totalAmount) RETURNS Double:
+        RETURN totalAmount - flatAmount
+
+    METHOD getDescription() RETURNS String:
+        RETURN "Flat ₹" + flatAmount + " Off"
+END CLASS
+
+CLASS PercentageDiscount IMPLEMENTS DiscountPolicy:
+    PRIVATE Double percentage = 0.10 // 10% off
+
+    CONSTRUCTOR(Double percentage):
+        SET this.percentage = percentage
+
+    METHOD applyDiscount(Double totalAmount) RETURNS Double:
+        RETURN totalAmount * (1 - percentage)
+
+    METHOD getDescription() RETURNS String:
+        RETURN (percentage * 100) + "% Off"
+END CLASS
+
+// 4. BillItem Class (combines MenuItem with its specific TaxCalculator)
+CLASS BillItem:
+    PRIVATE MenuItem item
+    PRIVATE TaxCalculator taxCalculator
+
+    CONSTRUCTOR(MenuItem item, TaxCalculator taxCalculator):
+        SET this.item = item
+        SET this.taxCalculator = taxCalculator
+
+    METHOD getItem() RETURNS MenuItem:
+        RETURN this.item
+
+    METHOD getTaxCalculator() RETURNS TaxCalculator:
+        RETURN this.taxCalculator
+
+    METHOD getPriceWithTax() RETURNS Double:
+        SET basePrice = item.getPrice()
+        SET tax = taxCalculator.calculateTax(basePrice)
+        RETURN basePrice + tax
+END CLASS
+
+// 5. BillingSystem Class
+CLASS BillingSystem:
+    PRIVATE List<BillItem> items
+    PRIVATE DiscountPolicy currentDiscountPolicy
+
+    CONSTRUCTOR():
+        SET this.items = new List<BillItem>()
+        SET this.currentDiscountPolicy = new NoDiscount() // Default
+
+    METHOD addItem(MenuItem item, TaxCalculator taxCalculator):
+        ADD new BillItem(item, taxCalculator) to this.items
+
+    METHOD setDiscountPolicy(DiscountPolicy policy):
+        SET this.currentDiscountPolicy = policy
+
+    METHOD calculateTotalBill() RETURNS Double:
+        SET subtotal = 0.0
+        FOR EACH billItem IN this.items:
+            SET subtotal = subtotal + billItem.getPriceWithTax()
+        END FOR
+        RETURN currentDiscountPolicy.applyDiscount(subtotal)
+
+    METHOD printBill():
+        PRINT "\n--- SPICE VILLA BILL ---"
+        PRINT "Item\t\tPrice\tTaxable Price"
+        PRINT "----------------------------------"
+        SET totalBeforeDiscount = 0.0
+        FOR EACH billItem IN this.items:
+            SET item = billItem.getItem()
+            SET price = item.getPrice()
+            SET priceWithTax = billItem.getPriceWithTax()
+            PRINT item.getName() + "\t\t" + FORMAT(price, 2) + "\t" + FORMAT(priceWithTax, 2)
+            SET totalBeforeDiscount = totalBeforeDiscount + priceWithTax
+        END FOR
+        PRINT "----------------------------------"
+        PRINT "Subtotal (incl. Tax): " + FORMAT(totalBeforeDiscount, 2)
+        PRINT "Discount Applied: " + currentDiscountPolicy.getDescription()
+        PRINT "Final Amount: " + FORMAT(calculateTotalBill(), 2)
+        PRINT "----------------------------------"
+END CLASS
+
+// 6. Main Program / Scenario Demonstration
+PROGRAM Main:
+    // Scenario 1: Customer order with 10% off
+    PRINT "\n--- Scenario 1: Regular Order with 10% Off ---"
+    SET billingSystem1 = new BillingSystem()
+
+    SET paneerTikka = new MenuItem("Paneer Tikka", 250.0)
+    SET coke = new MenuItem("Coke", 50.0)
+    SET importedCheese = new MenuItem("Imported Cheese", 400.0)
+
+    billingSystem1.addItem(paneerTikka, new FoodTax())
+    billingSystem1.addItem(coke, new BeverageTax())
+    billingSystem1.addItem(importedCheese, new ImportedTax())
+
+    billingSystem1.setDiscountPolicy(new PercentageDiscount(0.10))
+    billingSystem1.printBill()
+
+    // Scenario 2: Introducing a new discount scheme (Buy 1 Get 1 Free)
+    // This demonstrates adding new functionality without modifying existing BillingSystem code.
+    CLASS BuyOneGetOneFreeDiscount IMPLEMENTS DiscountPolicy:
+        METHOD applyDiscount(Double totalAmount) RETURNS Double:
+            // Simplified logic: assume discount is applied to the cheapest item
+            // In a real system, this would be more complex, e.g., tracking item quantities
+            PRINT "(Simulating Buy 1 Get 1 Free - applying a fixed discount for demonstration)"
+            RETURN totalAmount - 150.0 // Arbitrary discount for demo
+
+        METHOD getDescription() RETURNS String:
+            RETURN "Buy 1 Get 1 Free (Simulated)"
+    END CLASS
+
+    PRINT "\n--- Scenario 2: New 'Buy 1 Get 1' Discount ---"
+    SET billingSystem2 = new BillingSystem()
+    billingSystem2.addItem(new MenuItem("Burger", 180.0), new FoodTax())
+    billingSystem2.addItem(new MenuItem("Fries", 70.0), new FoodTax())
+    billingSystem2.setDiscountPolicy(new BuyOneGetOneFreeDiscount())
+    billingSystem2.printBill()
+
+    // Scenario 3: Introducing a new tax type (LuxuryTax)
+    // This demonstrates adding new functionality without modifying existing BillingSystem or BillItem code.
+    CLASS LuxuryTax IMPLEMENTS TaxCalculator:
+        PRIVATE Double LUXURY_RATE = 0.20 // 20% Luxury Tax
+
+        METHOD calculateTax(Double amount) RETURNS Double:
+            RETURN amount * LUXURY_RATE
+    END CLASS
+
+    PRINT "\n--- Scenario 3: New Luxury Tax for Premium Item ---"
+    SET billingSystem3 = new BillingSystem()
+    SET premiumSteak = new MenuItem("Premium Steak", 1200.0)
+    SET sparklingWater = new MenuItem("Sparkling Water", 80.0)
+
+    // Apply LuxuryTax to premium item
+    billingSystem3.addItem(premiumSteak, new LuxuryTax())
+    billingSystem3.addItem(sparklingWater, new BeverageTax())
+
+    billingSystem3.setDiscountPolicy(new NoDiscount())
+    billingSystem3.printBill()
+END PROGRAM
+```
