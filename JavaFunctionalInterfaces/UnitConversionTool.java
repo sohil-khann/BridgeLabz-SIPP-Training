@@ -1,7 +1,8 @@
+
 // Unit Conversion Tool
 // Scenario: Logistics software needs standard unit conversions (km to miles, kg to lbs)
 // Task: Implement conversions as static interface methods
-
+// Package declaration removed since it should be in default package
 // Unit conversion interface
 interface UnitConverter {
     // Distance conversions
@@ -181,7 +182,7 @@ public class UnitConversionTool {
         
         System.out.println("\n--- Shipping Cost Calculation ---");
         double cost = shipment1.calculateShippingCost(0.5, 0.2); // $0.5 per kg, $0.2 per km
-        System.out.println("Shipping cost for " + shipment1.trackingNumber + ": $" + String.format("%.2f", cost));
+        System.out.println("Shipping cost for SHP001: $" + String.format("%.2f", cost));
         
         shipment2.displayInMetric();
         shipment2.displayInImperial();
