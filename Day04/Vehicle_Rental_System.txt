@@ -1,0 +1,38 @@
+INTERFACE Rentable
+    METHOD rent()
+    METHOD returnVehicle()
+END INTERFACE
+
+ABSTRACT CLASS Vehicle IMPLEMENTS Rentable
+    ATTRIBUTE brand, model, rentPerDay
+    METHOD Constructor(brand, model, rentPerDay)
+        SET attributes
+END CLASS
+
+CLASS Car EXTENDS Vehicle
+    METHOD rent()
+        PRINT "Car rented: " + brand + " " + model
+    METHOD returnVehicle()
+        PRINT "Car returned."
+END CLASS
+
+CLASS Bike EXTENDS Vehicle
+    METHOD rent()
+        PRINT "Bike rented: " + brand + " " + model
+    METHOD returnVehicle()
+        PRINT "Bike returned."
+END CLASS
+
+CLASS VehicleFactory
+    METHOD getVehicle(type, brand, model, rentPerDay)
+        IF type == "car"
+            RETURN new Car(brand, model, rentPerDay)
+        ELSE IF type == "bike"
+            RETURN new Bike(brand, model, rentPerDay)
+END CLASS
+
+MAIN:
+    factory = VehicleFactory()
+    vehicle1 = factory.getVehicle("car", "Toyota", "Corolla", 2000)
+    CALL vehicle1.rent()
+    CALL vehicle1.returnVehicle()

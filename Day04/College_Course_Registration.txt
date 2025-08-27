@@ -1,0 +1,18 @@
+CLASS Student
+    ATTRIBUTE name, rollNo
+END CLASS
+
+CLASS Course
+    ATTRIBUTE code, title
+END CLASS
+
+MAIN:
+    CREATE courseMap = Map<Course, List<Student>>()
+
+    ADD course1 with students [S1, S2]
+    ADD course2 with students [S3]
+
+    FOR each (course, studentList) in courseMap
+        PRINT course.title
+        FOR each student in studentList
+            PRINT student.name

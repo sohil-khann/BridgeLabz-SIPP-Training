@@ -1,0 +1,12 @@
+CLASS Transaction
+    ATTRIBUTE merchant, month, amount
+
+MAIN:
+    CREATE transactionList
+
+    GROUP transactionList BY merchant → BY month
+        CALCULATE totalAmount per group
+
+    FOR each merchant
+        FOR each month
+            PRINT merchant, month, totalAmount

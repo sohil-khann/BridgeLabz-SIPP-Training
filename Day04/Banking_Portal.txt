@@ -1,0 +1,42 @@
+CLASS Account
+    ATTRIBUTE accountNumber, balance
+
+    METHOD Constructor(accountNumber, balance)
+        SET attributes
+
+    METHOD deposit(amount)
+        balance += amount
+
+    METHOD withdraw(amount)
+        IF balance >= amount
+            balance -= amount
+        ELSE
+            PRINT "Insufficient funds."
+END CLASS
+
+CLASS SavingAccount EXTENDS Account
+    ATTRIBUTE minBalance = 1000
+
+    METHOD withdraw(amount)
+        IF balance - amount >= minBalance
+            balance -= amount
+        ELSE
+            PRINT "Cannot withdraw, minimum balance required."
+END CLASS
+
+CLASS CurrentAccount EXTENDS Account
+    ATTRIBUTE overdraftLimit = 5000
+
+    METHOD withdraw(amount)
+        IF balance + overdraftLimit >= amount
+            balance -= amount
+        ELSE
+            PRINT "Withdrawal exceeds overdraft limit."
+END CLASS
+
+MAIN:
+    CREATE sAcc = SavingAccount("S101", 5000)
+    CREATE cAcc = CurrentAccount("C101", 2000)
+
+    CALL sAcc.withdraw(4500)
+    CALL cAcc.withdraw(6000)

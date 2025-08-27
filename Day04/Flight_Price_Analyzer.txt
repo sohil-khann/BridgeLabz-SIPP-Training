@@ -1,0 +1,34 @@
+CLASS Flight
+    ATTRIBUTE flightNo, price, duration
+
+    METHOD Constructor(flightNo, price, duration)
+        SET attributes
+END CLASS
+
+METHOD compareFlights(f1, f2)
+    IF f1.price != f2.price
+        RETURN f1.price - f2.price
+    ELSE
+        RETURN f1.duration - f2.duration
+
+METHOD mergeSort(flightList, comparator)
+    IF list size <= 1 RETURN list
+    SPLIT list into left and right
+    leftSorted = mergeSort(left, comparator)
+    rightSorted = mergeSort(right, comparator)
+    RETURN merge(leftSorted, rightSorted, comparator)
+
+METHOD merge(left, right, comparator)
+    CREATE result list
+    WHILE both lists not empty
+        IF comparator(left[0], right[0]) <= 0
+            ADD left[0] to result
+        ELSE
+            ADD right[0] to result
+    ADD remaining elements
+    RETURN result
+
+MAIN:
+    CREATE list of flights
+    CALL mergeSort(list, compareFlights)
+    PRINT sorted flights

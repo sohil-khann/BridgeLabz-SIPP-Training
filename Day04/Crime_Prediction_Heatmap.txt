@@ -1,0 +1,22 @@
+CLASS Graph
+    ATTRIBUTE adjacencyMap (zone → list of connected zones)
+    ATTRIBUTE riskData (zone → crime risk score)
+
+    METHOD addEdge(zone1, zone2)
+        ADD zone2 to adjacencyMap[zone1]
+        ADD zone1 to adjacencyMap[zone2]
+
+    METHOD dfs(zone, visited, threshold)
+        MARK zone as visited
+        IF riskData[zone] >= threshold
+            PRINT "High risk zone: " + zone
+        FOR neighbor in adjacencyMap[zone]
+            IF not visited[neighbor]
+                CALL dfs(neighbor, visited, threshold)
+END CLASS
+
+MAIN:
+    CREATE graph with zones and crime scores
+    ADD edges between connected zones
+    CREATE visited set
+    CALL dfs(startZone, visited, 70) // threshold risk score = 70
