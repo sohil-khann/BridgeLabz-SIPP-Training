@@ -1,228 +1,143 @@
-# BridgeLabz SIPP Training - Java Programming Problems
+# BridgeLabz SIPP Training - Java Programming Repository
 
-This repository contains comprehensive pseudo-code solutions for Java programming problems organized by difficulty and topics including Java OOPs, Data Structures & Algorithms, and Collections, Generics, Streams.
+This repository serves as a comprehensive collection of Java programming exercises, pseudo-code solutions, and practical code examples developed as part of the BridgeLabz Software Industry Partnership Program (SIPP).
+
+It covers a wide range of topics from fundamental concepts to advanced data structures, algorithms, and modern Java features.
 
 ## 📁 Repository Structure
 
 ```
 BridgeLabz-SIPP-Training/
-├── PseudoCode/                    # All pseudo-code solutions
-│   ├── Day 1 - Basic Problems/
+├── .idea/                         # IntelliJ IDEA project files
+├── Collections/                   # Practical examples demonstrating Java Collections Framework
+│   ├── BankingSystem/             # Banking system using collections
+│   ├── InsurancePolicyManagementSystem/ # Policy management using collections
+│   ├── ListInterface/             # Examples using List interface (ArrayList, LinkedList)
+│   ├── MapInterface/              # Examples using Map interface (HashMap, TreeMap)
+│   ├── QueueInterface/            # Examples using Queue interface (LinkedList, PriorityQueue)
+│   ├── SetInterface/              # Examples using Set interface (HashSet, TreeSet)
+│   ├── ShoppingCart/              # Shopping cart implementation
+│   └── VotingSystem/              # Voting system example
+├── Generics/                      # Demonstrations of Java Generics
+│   ├── AIDrivenResumeScreeningSystem/ # Generic resume screening system
+│   ├── DynamicOnlineMarketplace/  # Generic online marketplace
+│   ├── MultiLevelUniversityCourseManagementSystem/ # Generic course management
+│   ├── PersonalizedMealPlanGenerator/ # Generic meal plan generator
+│   └── SmartWarehouseManagementSystem/ # Generic warehouse management
+├── JavaExceptions/                # Examples of Java Exception Handling
+│   ├── ...                        # Various exception handling scenarios
+├── JavaFunctionalInterfaces/      # Examples of Java 8 Functional Interfaces
+│   ├── ...                        # Custom functional interfaces and usage
+├── JavaLambdaExpression/          # Demonstrations of Lambda Expressions
+│   ├── ...                        # Practical applications of lambdas
+├── JavaRegexAndJunit/             # Regular Expressions and JUnit Testing examples
+│   ├── ...                        # Regex patterns and JUnit test cases
+├── JavaStreams/                   # Examples of Java 8 Stream API
+│   ├── ...                        # Stream operations (filter, map, reduce, collect)
+├── PseudoCode/                    # Detailed pseudo-code solutions for complex problems
+│   ├── Day 1 - Basic Problems/    # Foundation level pseudo-code
 │   │   ├── SmartFarmingSystem.txt
 │   │   ├── OnlineQuizTimer.txt
 │   │   ├── JobScheduler.txt
 │   │   ├── OnlineStoreCartSystem.txt
-│   │   ├── HospitalDepartmentMapper.txt
-│   │   └── (6 total files)
-│   ├──
-│   ├── Day 2 - Intermediate Problems/
+│   │   └── HospitalDepartmentMapper.txt
+│   ├── Day 2 - Intermediate Problems/ # Intermediate level pseudo-code
 │   │   ├── FoodDeliverySystem.txt
 │   │   ├── MedicalRecordManager.txt
 │   │   ├── PatientRecordHashing.txt
 │   │   ├── MazeSolverBot.txt
 │   │   ├── LibraryBookFilter.txt
-│   │   ├── PaymentProcessor.txt
-│   │   └── (6 total files)
-│   ├──
-│   ├── Day 3 - Advanced Problems/
-│   │   ├── BankingPortal.txt
-│   │   ├── VehicleRentalSystem.txt
-│   │   ├── FlightPriceAnalyzer.txt
-│   │   ├── CrimePredictionHeatmap.txt
-│   │   ├── CollegeCourseRegistration.txt
-│   │   ├── DigitalWalletTransactionsReport.txt
-│   │   └── (6 total files)
-│   └──
-├── readme.md                      # This documentation file
-└──
+│   │   └── PaymentProcessor.txt
+│   └── Day 3 - Advanced Problems/ # Advanced level pseudo-code
+│       ├── BankingPortal.txt
+│       ├── VehicleRentalSystem.txt
+│       ├── FlightPriceAnalyzer.txt
+│       ├── CrimePredictionHeatmap.txt
+│       ├── CollegeCourseRegistration.txt
+│       └── DigitalWalletTransactionsReport.txt
+└── readme.md                      # This documentation file
 ```
 
-## 📚 Problem Categories
+## 📚 Content Overview
 
-### Day 1 - Foundation Level
-**Focus**: Basic OOPs concepts, fundamental data structures
-- **Smart Farming System** - Abstract classes and inheritance
-- **Online Quiz Timer** - Circular array implementation
-- **Job Scheduler** - Priority queue with custom objects
-- **Online Store Cart System** - Collections and generics
-- **Hospital Department Mapper** - Map with List values
+This repository is structured to provide both theoretical understanding through pseudo-code and practical implementation through Java code examples.
 
-### Day 2 - Intermediate Level
-**Focus**: Advanced OOPs, data structures, algorithmic thinking
-- **Food Delivery System** - Composition design pattern
-- **Medical Record Manager** - Interfaces and polymorphism
-- **Patient Record Hashing** - HashMap CRUD operations
-- **Maze Solver Bot** - Recursion and backtracking algorithms
-- **Library Book Filter** - Java Streams and Lambda expressions
-- **Payment Processor** - Generic interfaces and implementations
+### Pseudo-Code Problems (Day 1, Day 2, Day 3)
+These `.txt` files contain detailed pseudo-code for a variety of programming challenges, categorized by difficulty and topic. They serve as blueprints for implementing solutions in Java, focusing on:
 
-### Day 3 - Advanced Level
-**Focus**: Complex system design, advanced algorithms, enterprise patterns
+-   **Java OOPs**: Abstract classes, inheritance, polymorphism, composition, interfaces, design patterns (e.g., Factory).
+-   **Data Structures & Algorithms**: Arrays, Lists, Queues, Stacks, Priority Queues, HashMaps, Graphs (DFS), Recursion, Backtracking, Sorting (Merge Sort).
+-   **Collections, Generics, Streams**: Usage of Java Collections Framework (Map, List, Set), Generics for type safety, and Stream API for data processing with Lambdas.
 
-#### Java OOPs Problems
-- **🟡 Banking Portal (Moderate)**
-  - Base Account class with SavingAccount and CurrentAccount subclasses
-  - Method overriding for withdrawal rules
-  - Banking portal management system
+### Java Code Examples
+These directories contain actual Java source code (`.java` files) demonstrating various core Java concepts and features.
 
-- **🔴 Vehicle Rental System (Difficult)**
-  - Abstract vehicle types with inheritance hierarchy
-  - Rentable interface implementation
-  - Factory pattern for vehicle creation
-  - Complex rental transaction management
-
-#### Data Structures & Algorithms
-- **🟡 Flight Price Analyzer (Moderate)**
-  - Custom comparators for sorting
-  - Merge Sort implementation for flight data
-  - Multi-criteria sorting (price and duration)
-
-- **🔴 Crime Prediction Heatmap (Difficult)**
-  - Graph representation of city zones
-  - DFS algorithm for high-risk area detection
-  - Crime data analysis and prediction system
-
-#### Collections, Generics, Streams
-- **🟡 College Course Registration (Moderate)**
-  - Multimap structure: Map<Course, List<Student>>
-  - Student and course management
-  - Enrollment tracking and display
-
-- **🔴 Digital Wallet Transactions Report (Difficult)**
-  - Advanced stream operations for grouping and aggregation
-  - Monthly merchant summaries
-  - Transaction trend analysis
-  - Comprehensive financial reporting
+-   **Collections/**: Practical implementations showcasing the use of `List`, `Set`, `Map`, and `Queue` interfaces and their common implementations. Includes examples like banking systems, shopping carts, and various utility operations on collections.
+-   **Generics/**: Demonstrates how to use generics to create flexible, reusable, and type-safe code. Examples include generic data structures and systems like online marketplaces and warehouse management.
+-   **JavaExceptions/**: Covers different aspects of Java's exception handling mechanism, including `try-catch-finally`, custom exceptions, and exception propagation.
+-   **JavaFunctionalInterfaces/**: Illustrates the use of built-in and custom functional interfaces introduced in Java 8.
+-   **JavaLambdaExpression/**: Provides examples of using lambda expressions for concise and functional programming.
+-   **JavaRegexAndJunit/**: Contains examples of using Java's regular expression API for pattern matching and text manipulation, alongside JUnit 5 test cases for unit testing.
+-   **JavaStreams/**: Showcases the powerful Stream API for processing collections of objects in a declarative way, including operations like filtering, mapping, and reducing.
 
 ## 🎯 Learning Objectives
 
-### Java OOPs Concepts
-- **Inheritance**: Abstract classes, method overriding
-- **Polymorphism**: Interface implementation, dynamic binding
-- **Encapsulation**: Private fields, public methods, data hiding
-- **Composition**: HAS-A relationships, complex object structures
-- **Design Patterns**: Factory pattern, composition over inheritance
+By exploring this repository, you will gain a deeper understanding of:
 
-### Data Structures & Algorithms
-- **Linear Structures**: Arrays, Lists, Queues, Stacks
-- **Tree Structures**: Priority queues, binary heaps
-- **Graph Structures**: Adjacency lists, DFS traversal
-- **Sorting Algorithms**: Merge sort, custom comparators
-- **Searching**: Hash-based lookups, graph traversal
-
-### Collections, Generics, Streams
-- **Collections Framework**: Map, List, Set implementations
-- **Generics**: Type safety, generic classes and methods
-- **Stream API**: Filtering, mapping, reducing operations
-- **Lambda Expressions**: Functional programming concepts
-- **Grouping & Aggregation**: Collectors, groupingBy operations
+-   **Core Java Concepts**: Variables, data types, control flow, methods.
+-   **Object-Oriented Programming (OOP)**: Classes, objects, inheritance, polymorphism, encapsulation, abstraction, interfaces, and design patterns.
+-   **Data Structures**: Arrays, Lists, Sets, Maps, Queues, Stacks, Trees, Graphs.
+-   **Algorithms**: Searching, sorting, recursion, backtracking, graph traversal.
+-   **Java Collections Framework**: Effective use of various collection types.
+-   **Generics**: Writing flexible and type-safe code.
+-   **Java 8 Features**: Lambda expressions, Functional Interfaces, Stream API.
+-   **Exception Handling**: Robust error management in Java applications.
+-   **Unit Testing**: Writing effective tests using JUnit.
+-   **Software Design Principles**: Modularity, reusability, and maintainability.
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Basic understanding of Java programming
-- Familiarity with object-oriented concepts
-- Understanding of basic data structures
+-   Java Development Kit (JDK) 8 or higher installed.
+-   An Integrated Development Environment (IDE) like IntelliJ IDEA or Eclipse (recommended).
+-   Basic understanding of Java syntax and programming concepts.
 
 ### How to Use
-1. **Study the Pseudo-code**: Each file contains detailed pseudo-code with comments
-2. **Implement in Java**: Convert pseudo-code to actual Java implementations
-3. **Test Your Solutions**: Create test cases based on the provided examples
-4. **Extend Functionality**: Add additional features beyond the basic requirements
-
-### Implementation Guidelines
-```java
-// Example structure for implementation
-public class YourImplementation {
-    // Follow the pseudo-code structure
-    // Add proper Java syntax and conventions
-    // Include error handling and validation
-    // Write comprehensive test cases
-}
-```
-
-## 📊 Problem Difficulty Legend
-
-- **🟢 Easy**: Basic concepts, straightforward implementation
-- **🟡 Moderate**: Multiple concepts combined, requires planning
-- **🔴 Difficult**: Complex systems, advanced algorithms, architectural decisions
+1.  **Clone the Repository**: 
+    ```bash
+    git clone https://github.com/your-username/BridgeLabz-SIPP-Training.git
+    ```
+2.  **Open in IDE**: Import the cloned repository into your preferred Java IDE.
+3.  **Explore Code**: Navigate through the `Collections/`, `Generics/`, `JavaExceptions/`, `JavaFunctionalInterfaces/`, `JavaLambdaExpression/`, `JavaRegexAndJunit/`, and `JavaStreams/` directories to examine the practical Java code examples.
+4.  **Study Pseudo-code**: Refer to the `PseudoCode/` directory for detailed problem statements and algorithmic approaches. Implement these pseudo-codes in Java to solidify your understanding.
+5.  **Run Examples**: Compile and run the `.java` files from your IDE or command line to see the concepts in action.
+6.  **Experiment**: Modify the existing code, add new features, and create your own test cases to deepen your learning.
 
 ## 🔧 Development Tools
 
-### Recommended Setup
-- **IDE**: IntelliJ IDEA or Eclipse
-- **Build Tool**: Maven or Gradle
-- **Testing**: JUnit 5 for unit tests
-- **Version Control**: Git for tracking changes
-
-### Testing Approach
-```java
-// Example test structure
-@Test
-public void testBankingPortal() {
-    BankingPortal portal = new BankingPortal();
-    // Test account creation
-    // Test withdrawal rules
-    // Test edge cases
-}
-```
-
-## 📈 Progress Tracking
-
-### Day 1 Completion Checklist
-- [ ] Smart Farming System implemented
-- [ ] Online Quiz Timer tested
-- [ ] Job Scheduler optimized
-- [ ] Online Store Cart System functional
-- [ ] Hospital Department Mapper complete
-
-### Day 2 Completion Checklist
-- [ ] Food Delivery System with composition
-- [ ] Medical Record Manager with interfaces
-- [ ] Patient Record Hashing operations
-- [ ] Maze Solver Bot algorithm working
-- [ ] Library Book Filter with streams
-- [ ] Payment Processor with generics
-
-### Day 3 Completion Checklist
-- [ ] Banking Portal with inheritance
-- [ ] Vehicle Rental System with factory pattern
-- [ ] Flight Price Analyzer with merge sort
-- [ ] Crime Prediction with DFS
-- [ ] Course Registration with multimap
-- [ ] Digital Wallet with stream aggregation
-
-## 🎓 Additional Resources
-
-### Java Documentation
-- [Oracle Java Documentation](https://docs.oracle.com/en/java/)
-- [Java Collections Framework](https://docs.oracle.com/javase/tutorial/collections/)
-- [Java Stream API](https://docs.oracle.com/javase/tutorial/collections/streams/)
-
-### Algorithm Resources
-- [Big O Cheat Sheet](https://www.bigocheatsheet.com/)
-- [GeeksforGeeks Java](https://www.geeksforgeeks.org/java/)
-- [LeetCode Java Problems](https://leetcode.com/tag/java/)
-
-### Best Practices
-- Follow Java naming conventions
-- Write meaningful comments
-- Implement proper error handling
-- Create comprehensive test cases
-- Use appropriate design patterns
+-   **IDE**: IntelliJ IDEA (Community Edition is sufficient) or Eclipse.
+-   **Build Tool**: Maven or Gradle (for projects that use them, e.g., `JavaRegexAndJunit/JavaJunit`).
+-   **Testing Framework**: JUnit 5.
 
 ## 🤝 Contributing
 
-Feel free to:
-- Submit improvements to pseudo-code
-- Add additional test cases
-- Share implementation approaches
-- Report any issues or suggestions
+Contributions are welcome! If you have suggestions for improvements, new problems, or bug fixes, please feel free to:
+
+-   Fork the repository.
+-   Create a new branch (`git checkout -b feature/YourFeature`).
+-   Make your changes.
+-   Commit your changes (`git commit -m 'Add new feature'`).
+-   Push to the branch (`git push origin feature/YourFeature`).
+-   Open a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the `LICENSE.md` file for details.
 
 ---
 
-**Total Problems**: 18 (6 per day across 3 days)
-**Topics Covered**: Java OOPs, Data Structures, Algorithms, Collections, Generics, Streams
-**Difficulty Range**: Easy to Advanced
+**Total Problems**: 18 pseudo-code problems, plus numerous Java code examples.
+**Topics Covered**: Comprehensive Java OOPs, Data Structures, Algorithms, Collections, Generics, Streams, Exception Handling, Regex, JUnit.
+**Difficulty Range**: Basic to Advanced.
 
 Happy Coding! 🚀
